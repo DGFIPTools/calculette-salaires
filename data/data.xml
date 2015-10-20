@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dgfip>
+	<data category="point_indice">
+		<value>4.63029</value>
+	</data>
+
+	<data category="grades">
+		<!-- l'index des grades permet de retrouver l'index correspondant dans les 'echelons-->
+		<display>
+			<value index="0">Contrôleur 2ème classe</value>
+			<value index="1">Contrôleur 1ère classe</value>
+			<value index="2">Contrôleur Principal</value>
+		</display>
+	</data>
+	
+	<data category="indices">
+		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
+		<display>
+			
+			<!-- 0 correspond ici a Contrôleur 2eme classe voir 'grades' -->
+			<items index="0">
+				<value index="1">326</value>
+				<value index="2">329</value>
+				<value index="3">332</value>
+				<value index="4">335</value>
+				<value index="5">345</value>
+				<value index="6">358</value>
+				<value index="7">371</value>
+				<value index="8">386</value>
+				<value index="9">400</value>
+				<value index="10">422</value>
+				<value index="11">443</value>
+				<value index="12">466</value>
+				<value index="13">486</value>
+			</items>
+			
+			<!-- 1 correspond ici a Contrôleur 1ere classe voir 'grades' -->
+			<items index="1">
+				<value index="1">327</value>
+				<value index="2">332</value>
+				<value index="3">340</value>
+				<value index="4">348</value>
+				<value index="5">361</value>
+				<value index="6">375</value>
+				<value index="7">390</value>
+				<value index="8">405</value>
+				<value index="9">425</value>
+				<value index="10">445</value>
+				<value index="11">468</value>
+				<value index="12">491</value>
+				<value index="13">515</value>
+			</items>
+			
+			<!-- 2 correspond ici a Contrôleur Principal voir 'grades' -->
+			<items index="2">
+				<value index="1">365</value>
+				<value index="2">380</value>
+				<value index="3">395</value>
+				<value index="4">410</value>
+				<value index="5">428</value>
+				<value index="6">449</value>
+				<value index="7">471</value>
+				<value index="8">494</value>
+				<value index="9">519</value>
+				<value index="10">540</value>
+				<value index="11">562</value>
+			</items>
+			
+		</display>
+	</data>
+</dgfip>
