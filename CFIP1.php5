@@ -11,13 +11,12 @@ $xml = simplexml_load_file($fichier);
 # point d'indice chargé depuis le xml
 $Point = $xml->xpath("//data[@category='point_indice']/value")[0]; 
 
-$Tableau_Echelon=array("0","326","329","332","335","345","358","371","386","400","422","443","466","486","327","332","340","348","361","375","390","405","425","445","468","491","515","365","380","395","410","428","449","471","494","519","540","562");
-
-if (isset($_POST["Echelon"]))
+if (isset($_POST["echelon"]))
 
 
-$INM=$Tableau_Echelon[$_POST["Echelon"]];
-$Traitement_indiciaire= $INM*$Point;
+$INM=$_POST["echelon"];
+$grade=$_POST["grade"];
+$Traitement_indiciaire= bcmul($INM,$Point,3);
 $IAT=0.0833*$Traitement_indiciaire;
 $IMT=101.98;    
 $IR=$_POST["IR"]*$Traitement_indiciaire/100;
@@ -40,12 +39,12 @@ elseif ($_POST["TAI"]==6)
 {$TAI=516.03;}
 if ($_POST["TAI"]==0)
 {$TAI=0;}
-if ($_POST["Echelon"]<8)
+if ($grade==0)
 {
     $PR=2733.32/12;
     
 }
-    else if ($_POST["Echelon"]<27)
+    else if ($grade==1)
    {$PR=3592.25/12;
     }
    

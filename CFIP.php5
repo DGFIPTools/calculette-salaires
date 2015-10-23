@@ -1,3 +1,66 @@
+<?php
+
+
+
+# chargement du fichier xml contenant les données
+$fichier = 'data/data.xml';
+$xml = simplexml_load_file($fichier);
+
+# point d'indice chargé depuis le xml
+$gradeList = $xml->xpath("//data[@category='grades']/value");
+$taiList = $xml->xpath("//data[@category='tai']/value");
+$irList = $xml->xpath("//data[@category='ir']/value");
+$echelonMap = $xml->xpath("//data[@category='echelons']/items");
+
+# on récupère les valeurs sauvegardés du grade, du TAI et de l'indemnité de résidence
+$gradeRestore = $_GET['grade'];
+$taiRestore = $_GET['tai'];
+$irRestore = $_GET['ir'];
+
+
+# au premier lancement l'index du grade est à 0 sinon à la valeur sauvegardée dans l'URL
+$echelonList = $echelonMap[$gradeRestore==NULL?0:$gradeRestore]->value;
+
+
+?>
+
+<script language="Javascript">
+	
+/** Get the index value of a select element in the document **/
+function getValue(name){
+	var selectElmt = document.getElementById(name);	
+    var selectOpt = selectElmt.options[selectElmt.selectedIndex].value;
+    return selectOpt;
+}
+	
+function Actualiser() {
+	
+	// on recupère le grade
+	var gradeString ="grade";
+    var selectOpt = getValue(gradeString);
+
+	// on récupère l'url courante
+	var dest = window.location.href;
+
+	// on recupère le dernier index du grade (celui ci étant placé en premier).
+	var index = dest.lastIndexOf(gradeString);
+	if(index >0){
+		// on retire les anciennes variables sauvegardées
+		dest = dest.substring(0,index-1);
+	}
+	
+	// on sauvegarde le grade, le TAI, ainsi que la résidence pour pouvoir les restaurer par la suite
+	var taiString="tai";
+	var taiValue=getValue(taiString);
+        
+    var irString="ir";
+	var irValue=getValue(irString);
+           
+	location.href = dest + "?"+gradeString+"="+selectOpt+"&"+taiString+"="+taiValue+"&"+irString+"="+irValue;
+}
+</script>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,47 +103,30 @@
       <table style="width: 740px;" align="center">
         <tbody>
           <tr>
-            <td style="text-align: right;">Grade et échelon<br>
+            <td style="text-align: right;">Grade<br>
             </td>
             <td style="text-align: left;">
-              <select required="required" name="Echelon">
-                <option selected="selected" value="1">Contrôleur 2ème classe 1er échelon</option>
-                <option value="2">Contrôleur 2ème classe 2ème échelon</option>
-                <option value="3">Contrôleur 2ème classe 3ème échelon</option>
-                <option value="4">Contrôleur 2ème classe 4ème échelon</option>
-                <option value="5">Contrôleur 2ème classe 5ème échelon</option>
-                <option value="6">Contrôleur 2ème classe 6ème échelon</option>
-                <option value="7">Contrôleur 2ème classe 7ème échelon</option>
-                <option value="8">Contrôleur 2ème classe 8ème échelon</option>
-                <option value="9">Contrôleur 2ème classe 9ème échelon</option>
-                <option value="10">Contrôleur 2ème classe 10ème échelon</option>
-                <option value="11">Contrôleur 2ème classe 11ème échelon</option>
-                <option value="12">Contrôleur 2ème classe 12ème échelon </option>
-                <option value="13">Contrôleur 2ème classe 13ème échelon</option>
-				<option value="14">Contrôleur 1ère classe 1er échelon</option>
-                <option value="15">Contrôleur 1ère classe 2ème échelon</option>
-                <option value="16">Contrôleur 1ère classe 3ème échelon</option>
-                <option value="17">Contrôleur 1ère classe 4ème échelon</option>
-                <option value="18">Contrôleur 1ère classe 5ème échelon</option>
-                <option value="19">Contrôleur 1ère classe 6ème échelon</option>
-                <option value="20">Contrôleur 1ère classe 7ème échelon</option>
-                <option value="21">Contrôleur 1ère classe 8ème échelon</option>
-                <option value="22">Contrôleur 1ère classe 9ème échelon</option>
-                <option value="23">Contrôleur 1ère classe 10ème échelon</option>
-                <option value="24">Contrôleur 1ère classe 11ème échelon</option>
-                <option value="25">Contrôleur 1ère classe 12ème échelon </option>
-                <option value="26">Contrôleur 1ère classe 13ème échelon</option>
-				<option value="27">Contrôleur Principal 1er échelon</option>
-                <option value="28">Contrôleur Principal 2ème échelon</option>
-                <option value="29">Contrôleur Principal 3ème échelon</option>
-                <option value="30">Contrôleur Principal 4ème échelon</option>
-                <option value="31">Contrôleur Principal 5ème échelon</option>
-				<option value="32">Contrôleur Principal 6ème échelon</option>
-                <option value="33">Contrôleur Principal 7ème échelon</option>
-                <option value="34">Contrôleur Principal 8ème échelon</option>
-                <option value="35">Contrôleur Principal 9ème échelon</option>
-                <option value="36">Contrôleur Principal 10ème échelon</option>
-                <option value="37">Contrôleur Principal 11ème échelon</option>
+              <select onchange='Actualiser()' required="required" id="grade" name="grade">
+				  <?php 
+				  $gradeIndex=0;
+				  $isGradeSelected="";
+				  
+				  # Affiche tous les grades
+				  foreach($gradeList as $grade){
+					  
+					  if($gradeIndex==$gradeRestore){
+						  $isGradeSelected='selected="selected"';
+					  }
+					  else{
+						  $isGradeSelected="";
+					  }
+					  
+					  echo '<option '.$isGradeSelected.' value="'.$gradeIndex.'">'.$grade.'</option>';
+					  $gradeIndex++;
+				  }
+				  
+				  ?>
+
               
               </select>
               <br>
@@ -89,18 +135,70 @@
             </td>
           </tr>
           
+          
+           <tr>
+            <td style="text-align: right;">Echelon<br>
+            </td>
+            <td style="text-align: left;">
+              <select required="required" id="echelon" name="echelon">
+				  <?php 
+				  $echelonIndex=0;
+				  $isEchelonSelected="";
+				  
+				  
+				  # Affiche tous les grades
+				  foreach($echelonList as $echelon){
+					  $echelonValue=$echelon->attributes();
+					 
+					  if($echelonIndex==0){
+						  $isEchelonSelected='selected="selected"';
+					  }
+					  else{
+						  $isEchelonSelected="";
+					  }
+					  
+					  echo '<option '.$isEchelonSelected.' value="'.$echelon.'">'.$echelonValue.'</option>';
+					  $echelonIndex++;
+				  }
+				  
+				  ?>
+
+              
+              </select>
+              <br>
+            </td>
+            <td style="height: 19.6px;"><br>
+            </td>
+          </tr>
+         
+         
+          
 		  <tr>
             <td style="text-align: right;">Prime Informaticiens<br>
             </td>
             <td style="width: 137.166px;">
-              <select required="required" name="TAI">
-			  <option selected="selected" value="0">Pas de TAI</option>
-                <option  value="1">Programmeur depuis moins d'un an</option>
-                <option value="2">Programmeur depuis plus d'un an mais moins de 2 ans et demi</option>
-                <option value="3">Programmeur au delà de 2ans et demi</option>     
- <option value="4">PSE  depuis moins d'un an</option>  
- <option value="5">PSE depuis plus d'un an mais moins de 2 ans et demi</option>  
- <option value="6">PSE au delà de 2ans et demi</option>   
+              <select required="required" name="TAI" id="tai">
+			  <?php 
+				  $taiIndex=0;
+				  $isTaiSelected="";
+				  
+				  
+				  # Affiche tous les grades
+				  foreach($taiList as $tai){
+					  $taiValue=$tai->attributes();
+					 
+					  if($taiIndex==$taiRestore){
+						  $isTaiSelected='selected="selected"';
+					  }
+					  else{
+						  $isTaiSelected="";
+					  }
+					  
+					  echo '<option '.$isTaiSelected.' value="'.$taiValue.'">'.$tai.'</option>';
+					  $taiIndex++;
+				  }
+				  
+				  ?>
               </select>
               <br>
             </td>
@@ -111,10 +209,28 @@
             <td style="text-align: right;">Indemnité de résidence<br>
             </td>
             <td>
-              <select required="required" name="IR">
-                <option selected="selected" value="0">0</option>
-                <option value="1%">1</option>
-                <option value="3%">3</option>
+              <select required="required" name="IR" id="ir">
+                 <?php 
+				  $irIndex=0;
+				  $isIrSelected="";
+				  
+				  
+				  # Affiche tous les grades
+				  foreach($irList as $ir){
+					  $irValue=$ir->attributes();
+					 
+					  if($irIndex==$irRestore){
+						  $isIrSelected='selected="selected"';
+					  }
+					  else{
+						  $isIrSelected="";
+					  }
+					  
+					  echo '<option '.$isIrSelected.' value="'.$irValue.'">'.$ir.'</option>';
+					  $irIndex++;
+				  }
+				  
+				  ?>
               </select>
               <br>
             </td>
