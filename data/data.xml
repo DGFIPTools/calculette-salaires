@@ -3,19 +3,42 @@
 	<data category="point_indice">
 		<value>4.63029</value>
 	</data>
+	
+	
+
+
+	<data category="tai">
+		<!-- TODO: changer ce système -->
+		<!-- l'index des TAI permet de retrouver l'index correspondant à la qualification-->
+		<value index="0">Pas de TAI</value>
+        <value index="1">Programmeur depuis moins d'un an</value>
+        <value index="2">Programmeur depuis plus d'un an mais moins de 2 ans et demi</value>
+        <value index="3">Programmeur au delà de 2ans et demi</value>     
+		<value index="4">PSE depuis moins d'un an</value>  
+		<value index="5">PSE depuis plus d'un an mais moins de 2 ans et demi</value>  
+		<value index="6">PSE au delà de 2ans et demi</value>   
+	</data>
+	
+	<data category="ir">
+		<!-- TODO: changer ce système -->
+		<!-- l'index des ir permet de retrouver l'index correspondant à l'indemnité de residence-->
+		<value index="0">zone 3 (0%)</value>
+        <value index="1%">zone 2 (1%)</value>
+        <value index="3%">zone 1 (3%)</value> 
+	</data>
+	
+	
 
 	<data category="grades">
 		<!-- l'index des grades permet de retrouver l'index correspondant dans les 'echelons-->
-		<display>
-			<value index="0">Contrôleur 2ème classe</value>
-			<value index="1">Contrôleur 1ère classe</value>
-			<value index="2">Contrôleur Principal</value>
-		</display>
+		<value index="0">Contrôleur 2ème classe</value>
+		<value index="1">Contrôleur 1ère classe</value>
+		<value index="2">Contrôleur Principal</value>
 	</data>
 	
-	<data category="indices">
+	<data category="echelons">
 		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
-		<display>
+	
 			
 			<!-- 0 correspond ici a Contrôleur 2eme classe voir 'grades' -->
 			<items index="0">
@@ -66,6 +89,5 @@
 				<value index="11">562</value>
 			</items>
 			
-		</display>
 	</data>
 </dgfip>
