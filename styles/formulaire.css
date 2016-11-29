@@ -7,7 +7,20 @@ td {
     padding-bottom: .25em;
 }
 
+input {
+	text-align: center;
+}
+
+.titleForm{
+   text-align: center;
+   color:black;
+   font-family: Arial;
+   font-size: 1.04em;
+   font-weight:bold;
+}
+
 td.formName {
+	text-align: right;
    width: 30%;
 }
 td.formValue {

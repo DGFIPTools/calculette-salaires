@@ -20,6 +20,8 @@ $retenuPcTab=($xml->xpath("//data[@category='retenu_pension_civile']/value"));
 $RetenuPC = floatval($retenuPcTab[0]); 
 
 $stag=0;
+
+
 /*Tableau indicaire*/
 $Tableau_Echelon=array("0","349","376","389","408","431","461","496","524","545","584","626","658","349","376","389","408","431","461","496","524","545","584","626","658");
 /*capture de l'échelon*/
@@ -29,8 +31,16 @@ if (isset($_POST["Echelon"]))
 $INM=$Tableau_Echelon[$_POST["Echelon"]];
 $Traitement_indiciaire= $INM*$Point;
 $IAT=0.0833*$Traitement_indiciaire;
-$IMT=101.98;    
-$IR=$_POST["IR"]*$Traitement_indiciaire/100;
+$IMT=101.98;
+
+if ($_POST["IR"]==1)
+{$IR_VALUE=0;}
+elseif ($_POST["IR"]==2)
+{$IR_VALUE=1;}
+elseif ($_POST["IR"]==3)
+{$IR_VALUE=3;}
+
+$IR=$IR_VALUE*$Traitement_indiciaire/100;
 if ($_POST["Echelon"]<13)
 {
     $ACF= 3853/12;
@@ -46,17 +56,17 @@ $ISS=$CMI*$CS*14.5
 $Traitement_Brut=$Traitement_indiciaire+$ISS+$PSR+$SFT+$IR*/
 /*echo "INM=$INM<br/>"; */
 
-if ($_POST["TAI"]==1)
+if ($_POST["TAI"]==2)
 {$TAI=381.53;$QUALIF="PSE";}
-elseif ($_POST["TAI"]==2)
-{$TAI=444.66;$QUALIF="PSE";}
 elseif ($_POST["TAI"]==3)
-{$TAI=516.03;$QUALIF="PSE";}
+{$TAI=444.66;$QUALIF="PSE";}
 elseif ($_POST["TAI"]==4)
-{$TAI=227.82;$QUALIF="Analyste";}
+{$TAI=516.03;$QUALIF="PSE";}
 elseif ($_POST["TAI"]==5)
-{$TAI=258.01;$QUALIF="Analyste";}
+{$TAI=227.82;$QUALIF="Analyste";}
 elseif ($_POST["TAI"]==6)
+{$TAI=258.01;$QUALIF="Analyste";}
+elseif ($_POST["TAI"]==7)
 {$TAI=323.89;$QUALIF="Analyste";}
 if ($_POST["TAI"]==0)
 {$TAI=0;}
@@ -73,15 +83,15 @@ if ($_POST["Echelon"]<8)
    {$PR=5920.42/12;
    }
    
-   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==0))
+   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==1))
 	{$PR=129.49;
 	 $stag=446.5;
 	}
-   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==1))
+   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==2))
    {$PR=166.67;
 	$stag=446.5;
 	}
-   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==2))
+   else if (($_POST["Echelon"]>12) and ($_POST["Stag"]==3))
    {$PR=356.30;
    $stag=446.5;
 	}
@@ -120,6 +130,8 @@ $PR = floor_prec($PR, 2);
 $PC=floor_prec($PC, 2);
 $IR=floor_prec($IR, 2);
 $TAI=floor_prec($TAI, 2);
+
+
 
 
 $Total_retenues=$PC+$CSG+$CRDS+$RIMT+$RAFP+$CS;
