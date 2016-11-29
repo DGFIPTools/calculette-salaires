@@ -1,0 +1,29 @@
+
+table {
+   width: 90%;
+}
+
+tr.spaceUnder > td
+{
+  padding-bottom: 1em;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+   table {
+   	width: 80%;
+   }
+}
+
+@media only screen and (min-width: 900px) {
+   table {
+   	width: 70%;
+   }
+}
+
+@media only screen and (min-width: 1200px) {
+   table {
+   	width: 60%;
+   }
+}

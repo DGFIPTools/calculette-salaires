@@ -1,0 +1,27 @@
+table {
+    border-collapse: separate;
+}
+
+td {
+    padding-top: .25em;
+    padding-bottom: .25em;
+}
+
+td.formName {
+   width: 30%;
+}
+td.formValue {
+   width: 70%;
+}
+
+
+
+select.autosize{
+    font-size: 0.9em;
+	 max-width: 320px;
+    width: 100% !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	 overflow: hidden;
+}
+

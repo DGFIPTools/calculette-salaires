@@ -1,0 +1,53 @@
+.celFiche{
+   text-align: center;
+   color:black;
+   font-family: Arial;
+   font-size: 1em;
+}
+
+.celFicheColor{
+   background-color: #DCE6EA; 
+}
+
+.titleFiche{
+   color:black;
+   font-family: Arial;
+   font-size: 0.7em;
+}
+
+.titleFicheColor {
+   background-color: #DCE6EA;
+}
+
+.footCelColor {
+   color : white;
+   background-color: #1C375D;
+}
+
+.footSpaceValue{
+	height:1em
+}
+
+h3,h4,h5{
+	text-align: center;
+}
+
+.footCelText {
+	text-align: center;
+}
+
+.footPaieValue{
+	border:solid 0.1em #1C375D
+}
+
+
+th.headCel {
+	color : white;
+   font-size: 0.8em;
+   background-color: #1C375D;
+   width: 30%;
+}
+th.headTitle {
+   width: 40%;
+}
+
