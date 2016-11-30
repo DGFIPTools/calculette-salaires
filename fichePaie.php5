@@ -98,9 +98,9 @@ MAJ le 30/11/2016
 <br>
 <br>
 <br>
-Version 1.2
+Version 1.3
 <br>
-Nouveautés : Unification affichage CFIP et IFIP
+Nouveautés : Unification affichage AAFIP, CFIP et IFIP
 <br>
 
 <?

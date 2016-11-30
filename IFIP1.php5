@@ -18,14 +18,11 @@ $Point = floatval($pointIndiceTab[0]);
 
 $retenuPcTab=($xml->xpath("//data[@category='retenu_pension_civile']/value"));
 $RetenuPC = floatval($retenuPcTab[0]); 
-
 $stag=0;
 
-
 /*Tableau indicaire*/
-$Tableau_Echelon=array("0","349","376","389","408","431","461","496","524","545","584","626","658","349","376","389","408","431","461","496","524","545","584","626","658");
-/*capture de l'échelon*/
-if (isset($_POST["Echelon"]))
+$Tableau_Echelon=array("0","349","376","389","408","431","461","496","524","545","584","626","658",
+"349","376","389","408","431","461","496","524","545","584","626","658");
 
 /*calcul de l'INM de l'IAT de l'IR de l'ACF et la TAI*/
 $INM=$Tableau_Echelon[$_POST["Echelon"]];
@@ -50,11 +47,7 @@ else
 {
 	$ACF=0;
 }
-	
-/*echo "<br/><td>"."Traitement indiciaire: ".round ($Traitement_indiciaire,2, PHP_ROUND_HALF_EVEN)."</td>";
-$ISS=$CMI*$CS*14.5
-$Traitement_Brut=$Traitement_indiciaire+$ISS+$PSR+$SFT+$IR*/
-/*echo "INM=$INM<br/>"; */
+
 
 if ($_POST["TAI"]==2)
 {$TAI=381.53;$QUALIF="PSE";}
@@ -100,7 +93,7 @@ if ($_POST["Echelon"]<8)
  /*  $test=$_POST["Echelon"];
    echo $test;*/
 
-/*calcul des charges*/
+/*calcul des Traitements et cotisations */
 $Traitement_Brut=$Traitement_indiciaire+$IMT+$IAT+$PR+$ACF+$IR+$TAI;
 $Traitement_Brut=floor_prec($Traitement_Brut, 2);
 $PC=$Traitement_indiciaire*$RetenuPC;
