@@ -29,14 +29,14 @@ $Tableau_Echelon=array("0","323","324","325","326","327","329","332","345","354"
 # Crade pour le moment, à améliorer plus tard
 if ($_POST["Echelon"]<13)
 {
-	$classe=" 1ère classe";
+	$classe=" 1ere classe";
 	$EchelonDisplay=$_POST["Echelon"];
     
 }
 else if ($_POST["Echelon"]<25)
 {
 	$EchelonDisplay=$_POST["Echelon"]-12;
-	$classe=" Principal 2ème classe ";
+	$classe=" Principal 2eme classe ";
 }
 else
 {
