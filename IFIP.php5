@@ -4,7 +4,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
  <link rel="stylesheet" type="text/css" href="styles/adaptive.css"/>
   <link rel="stylesheet" type="text/css" href="styles/formulaire.css"/>
-<title>Calcul traitement et salaire inspecteur des finances publiques</title>
+<title>Calcul traitement et salaire Inspecteur des Finances Publiques</title>
 <META name="keywords" content="salaire, calculateur, TSPEI, TSDD, TSPDD, TSCDD, TSCEI, IFIP, CFiP, CTRL, Inspecteur des finances publiques">
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
 </head>
@@ -12,7 +12,7 @@
   <body>
     <form action="/IFIP1.php5" method="post" name="ts" target="_parent">
       
-      <p class="titleForm"><a href="mailto:tatam3x@gmail.com">T3X</a>&nbsp; Simulation de salaire des Inspecteurs des finances publiques  &nbsp;</p>
+      <p class="titleForm"><a href="mailto:tatam3x@gmail.com">T3X</a>&nbsp; Simulation de salaire des Inspecteurs des Finances Publiques  &nbsp;</p>
       
       <?php
       include 'utils.php5';

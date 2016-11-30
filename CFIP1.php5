@@ -30,7 +30,14 @@ $INM=$Tableau_Echelon[$_POST["Echelon"]];
 $Traitement_indiciaire= $INM*$Point;
 $IAT=0.0833*$Traitement_indiciaire;
 $IMT=101.98;    
-$IR=$_POST["IR"]*$Traitement_indiciaire/100;
+if ($_POST["IR"]==1)
+{$IR_VALUE=0;}
+elseif ($_POST["IR"]==2)
+{$IR_VALUE=1;}
+elseif ($_POST["IR"]==3)
+{$IR_VALUE=3;}
+
+$IR=$IR_VALUE*$Traitement_indiciaire/100;
 
 
 if ($_POST["Echelon"]<38)
@@ -47,18 +54,18 @@ else
 $ISS=$CMI*$CS*14.5
 $Traitement_Brut=$Traitement_indiciaire+$ISS+$PSR+$SFT+$IR*/
 /*echo "INM=$INM<br/>"; */
-if ($_POST["TAI"]==1)
+if ($_POST["TAI"]==2)
 {$TAI=255.27;$QUALIF="Programmeur";
 }
-elseif ($_POST["TAI"]==2)
-{$TAI=296.44;$QUALIF="Programmeur";}
 elseif ($_POST["TAI"]==3)
-{$TAI=343.10;$QUALIF="Programmeur";}
+{$TAI=296.44;$QUALIF="Programmeur";}
 elseif ($_POST["TAI"]==4)
-{$TAI=381.53;$QUALIF="PSE";}
+{$TAI=343.10;$QUALIF="Programmeur";}
 elseif ($_POST["TAI"]==5)
-{$TAI=444.66;$QUALIF="PSE";}
+{$TAI=381.53;$QUALIF="PSE";}
 elseif ($_POST["TAI"]==6)
+{$TAI=444.66;$QUALIF="PSE";}
+elseif ($_POST["TAI"]==7)
 {$TAI=516.03;$QUALIF="PSE";}
 if ($_POST["TAI"]==0)
 {$TAI=0;}
@@ -102,23 +109,23 @@ if ($_POST["Echelon"]<8)
    {$PR=4064.54/12;
    }
    
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==0))
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==1))
 	{$PR=0;
 	 $stag=528.75;
 	}
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==1))
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==2))
    {$PR=83.33;
 	$stag=528.75;
 	}
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==2))
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==3))
    {$PR=258.30;
    $stag=528.75;
 	}
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==3))
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==4))
    {$PR=251.71;
    $stag=528.75;
 	}
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==4))  
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==5))  
    {$PR=248.41;
    $stag=528.75;
 	}

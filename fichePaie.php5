@@ -92,13 +92,15 @@ $Grade=$_SESSION["Grade"];
 <script type="text/javascript" src="//compteur.websiteout.net/js/35/5/0/1">
 </script> visiteurs.
 <br>
-MAJ le 21/11/2016
+MAJ le 30/11/2016
 <br>
 <br>
 <br>
 <br>
 <br>
-Version 1.1
+Version 1.2
+<br>
+Nouveautés : Unification affichage CFIP et IFIP
 <br>
 
 <?
