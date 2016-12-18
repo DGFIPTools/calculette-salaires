@@ -16,8 +16,13 @@ $xml = simplexml_load_file($dataFile);
 $pointIndiceTab=($xml->xpath("//data[@category='point_indice']/value"));
 $Point = floatval($pointIndiceTab[0]); 
 
+# Valeur de la retenu de pension civile
 $retenuPcTab=($xml->xpath("//data[@category='retenu_pension_civile']/value"));
-$RetenuPC = floatval($retenuPcTab[0]); 
+$RetenuPC = floatval($retenuPcTab[0]);
+
+# Valeur de l'IMT
+$IMTTab=($xml->xpath("//data[@category='imt']/value"));
+$IMT = floatval($IMTTab[0]); 
 
 
 
@@ -25,7 +30,6 @@ $RetenuPC = floatval($retenuPcTab[0]);
 $INM=$Tableau_Echelon[$_POST["Echelon"]];
 $Traitement_indiciaire= $INM*$Point;
 $IAT=0.0833*$Traitement_indiciaire;
-$IMT=101.98;
 
 if ($_POST["IR"]==1)
 {$IR_VALUE=0;}
@@ -43,7 +47,7 @@ $IR=$IR_VALUE*$Traitement_indiciaire/100;
 $Traitement_Brut=$Traitement_indiciaire+$IMT+$IAT+$PR+$ACF+$IR+$TAI;
 $Traitement_Brut=floor_prec($Traitement_Brut, 2);
 $PC=$Traitement_indiciaire*$RetenuPC;
-$RIMT=101.98*20/100;
+$RIMT=$IMT*20/100;
 $CSG=0.075*$Traitement_Brut*98.25/100;
 $CRDS=0.005*$Traitement_Brut*98.25/100;
 

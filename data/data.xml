@@ -6,8 +6,13 @@
 	</data>
 	
 	<data category="retenu_pension_civile">
-	<!-- Valeur 2016 -->
-		<value>0.0994</value>
+	<!-- Valeur 2017 -->
+		<value>0.1029</value>
+	</data>
+	
+	<data category="imt">
+	<!-- Valeur 2017-->
+		<value>106.76</value>
 	</data>
 	
 </dgfip>
