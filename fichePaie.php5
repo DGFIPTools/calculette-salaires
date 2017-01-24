@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $IsStagiaire=$_SESSION["stagiaire"];
 $QUALIF=$_SESSION["Qualif"];
 $Echelon=$_SESSION["Echelon"];
