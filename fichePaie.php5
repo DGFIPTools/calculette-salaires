@@ -103,9 +103,6 @@ Version 2.0
 Nouveautés : Calculatrice unique pour les 3 corps de la DGFIP
 <br>
 
-<?php
-require("compteur.php");
-?>
 <br>
     </p>
   </body>
