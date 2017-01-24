@@ -172,7 +172,7 @@ $elementFichePaie = array(
              
 $_SESSION["elementFichePaie"]=$elementFichePaie;
 
-header("Location: /fichePaie.php5");
+header("Location: /calcDgfip.php5?link=fichePaie.php5");
 exit;
 
 ?>
