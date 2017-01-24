@@ -92,19 +92,19 @@ $Grade=$_SESSION["Grade"];
 <script type="text/javascript" src="//compteur.websiteout.net/js/35/5/0/1">
 </script> visiteurs.
 <br>
-MAJ le 30/11/2016
+MAJ le 24/01/2017
 <br>
 <br>
 <br>
 <br>
 <br>
-Version 1.3
+Version 2.0
 <br>
-Nouveautés : Unification affichage AAFIP, CFIP et IFIP
+Nouveautés : Calculatrice unique pour les 3 corps de la DGFIP
 <br>
 
-<?
-/*require("compteur.php");*/
+<?php
+require("compteur.php");
 ?>
 <br>
     </p>
