@@ -1,30 +1,62 @@
 <?php session_start();?>
 <html>
 <head>
-<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
-<script src="js/loadQuery.js" type="text/javascript"></script>
 
-<link rel="stylesheet" type="text/css" href="styles/main_menu.css">
+<link rel="stylesheet" type="text/css" href="styles/navbar.css">
 </head>
 
+
+
 <body>
- <header>
-<nav id="menu">
-        <ul>
-        		<li><a id="aafip" href="?link=AAFIP.php5" link="AAFIP.php5">AAFIP</a></li>
-        		<li><a id="cfip" href="?link=CFIP.php5"link="CFIP.php5">CFIP</a></li>
-        		<li><a id="ifip" href="?link=IFIP.php5" link="IFIP.php5">IFIP</a></li>
-        </ul>
+	<header>
+		<nav id="menu">
+			<ul>
+			
+<?php
+// Fonction qui retourne vrai si on a un lien dans la barre d'adresse
+function hasLink(){
+	return ( isset( $_GET['link'] ) && !empty( $_GET['link'] ) );
+}
 
-</nav>
-</header>
+// Ici la liste des pages TODO: externaliser dans un fichier xml
+$listePages=array("AAFIP.php5","CFIP.php5","IFIP.php5");
+      
 
-<div id="result">
+// si un lien est fourni, alors on le met dans une variable
+if ( hasLink() ){
+	$pageLinkSelected=$_GET["link"];
+}
+// sinon on lui donne une valeur par défaut
+else{
+	$pageLinkSelected=$listePages[0];
+}
 
 
+// Partie affichage des liens de la navbar
+for($i = 0; $i < count($listePages); ++$i) {
+
+	$pageLink=$listePages[$i];
+	$pageName = basename($pageLink, ".php5");
+	
+	if( $pageLink==$pageLinkSelected ){
+		$pageClass='class="active"';
+	}
+	else{
+		$pageClass="";
+	}
+	
+	echo '<li><a '.$pageClass.' href="?link='.$pageLink.'" link="'.$pageLink.'">'.$pageName.'</a></li>';
+}
+?>
+ 		
+			</ul>
+		</nav>
+	</header>
+
+	<div id="result">
 <?php
 // si un link est fourni alors on affiche cette page
-if ( isset( $_GET['link'] ) && !empty( $_GET['link'] ) ){
+if ( hasLink()){
    include $_GET["link"];
 }
 else{
@@ -34,7 +66,7 @@ else{
 
 ?>
 
-</div>
+	</div>
 
 
 </body>

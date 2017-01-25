@@ -5,6 +5,7 @@
  <link rel="stylesheet" type="text/css" href="styles/adaptive.css"/>
   <link rel="stylesheet" type="text/css" href="styles/formulaire.css"/>
 <title>Calcul traitement et salaire Inspecteur des Finances Publiques</title>
+<link rel="icon" type="image/png" href="styles/categorie_a.png" />
 <META name="keywords" content="salaire, calculateur, TSPEI, TSDD, TSPDD, TSCDD, TSCEI, IFIP, CFiP, CTRL, Inspecteur des finances publiques">
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
 </head>
