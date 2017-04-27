@@ -2,50 +2,82 @@
 session_start();
 
 /*Tableau indicaire*/
-$Tableau_Echelon=array("0","323","324","325","326","327","329","332","345","354","368","375","382",
-"326","327","328","330","332","339","346","360","376","385","398","407",
-"338","345","355","370","385","400","422","436","462");
+$Tableau_Echelon=array("0","325","326","327","328","329","330","332","336","342","354","367",
+"328","330","332","336","343","350","364","380","390","402","411","416",
+"345","355","365","375","391","400","413","430","445","466");
 
 
 # Crade pour le moment, à améliorer plus tard
-if ($_POST["Echelon"]<13)
+if ($_POST["Echelon"]<12)
 {
 	$classe=" 1ere classe";
 	$EchelonDisplay=$_POST["Echelon"];
     
 }
-else if ($_POST["Echelon"]<25)
+else if ($_POST["Echelon"]<24)
 {
-	$EchelonDisplay=$_POST["Echelon"]-12;
+	$EchelonDisplay=$_POST["Echelon"]-11;
 	$classe=" Principal 2eme classe ";
 }
 else
 {
-	$EchelonDisplay=$_POST["Echelon"]-24;
+	$EchelonDisplay=$_POST["Echelon"]-23;
 	$classe=" Principal 1ere classe ";
 }
-
+# Calcul ACF
 $ACF= 1211.10/12;
 
+# Calcul TAI
 if ($_POST["TAI"]==2)
 {$TAI=255.27;}
 elseif ($_POST["TAI"]==3)
 {$TAI=296.44;}
 elseif ($_POST["TAI"]==4)
 {$TAI=343.10;}
-if ($_POST["TAI"]==0)
+if ($_POST["TAI"]==1)
 {$TAI=0;}
-if ($_POST["Echelon"]<8)
+
+#Calcul PR
+
+
+
+if ($_POST["IDF"]==1) 
+
+
+{ if ($_POST["Echelon"]<12 )
 {
-    $PR=1730.31/12;
-    
+    $PR=1690.77/12;   
+}  
+else if (($_POST["Echelon"]>11) and ($_POST["Echelon"]<24))
+{
+    $PR=1730.31/12;   
+}  
+else if  (($_POST["Echelon"]>23) and ($_POST["Echelon"]<36))
+   {$PR=1809.39/12;
+   }
+}  
+
+
+
+if ($_POST["IDF"]==2) 
+ 
+{
+if ($_POST["Echelon"]<12)
+{
+    $PR=1769.85/12;   
+}  
+else if (($_POST["Echelon"]<24) and ($_POST["Echelon"]>11))
+{
+    $PR=1809.39/12;   
+}  
+else  if (($_POST["Echelon"]<36) and ($_POST["Echelon"]>23))
+   {
+	   $PR=1888.47/12;
+   }
 }
 
-   
-   else if ($_POST["Echelon"]<36)
-   {$PR=1803.39/12;
-   }
-   
+ 
+#Indemnité de stage  
 $stag=0;
    
 
@@ -57,7 +89,6 @@ $_SESSION["stagiaire"]="";
 $_SESSION["Echelon"]=$EchelonDisplay;
 $_SESSION["Indice"]=$Tableau_Echelon[$_POST["Echelon"]];
 $_SESSION["Qualif"]=$QUALIF;
-
 $_SESSION["Total_revenues"]=$Total_revenues;
 $_SESSION["Total_retenues"]=$Total_retenues;
 $_SESSION["Total_net"]=$Total_net;

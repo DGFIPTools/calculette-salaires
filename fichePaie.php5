@@ -5,6 +5,7 @@ $QUALIF=$_SESSION["Qualif"];
 $Echelon=$_SESSION["Echelon"];
 $Indice=$_SESSION["Indice"];
 $Grade=$_SESSION["Grade"];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -93,6 +94,9 @@ $Grade=$_SESSION["Grade"];
 </script> visiteurs.
 <br>
 MAJ le 24/01/2017
+<?php  
+echo $IDF ;
+?>
 <br>
 <br>
 <br>
