@@ -12,7 +12,7 @@
   <body>
     <form action="/AAFIP1.php5" method="post" name="ts" target="_parent">
       
-      <p class="titleForm"><a href="mailto:tatam3x@gmail.com">T3X</a>&nbsp; Simulation de salaire des Agents Administratifs des Finances Publiques  &nbsp;</p>
+     <h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
       
       <?php
       include 'utils.php5';
@@ -83,9 +83,9 @@
       ?>
       
      <div class="titleForm">
-        <input formtarget="_parent" formmethod="post" value="Lancer la simulation" name="Calcul" type="submit"/>
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" formtarget="_parent" formmethod="post" value="Lancer la simulation" name="Calcul" type="submit"/>
      </div>
-          
+     <br>     
     </form>
   </body>
 </html>

@@ -1,4 +1,4 @@
-<table align="center">
+<table class="rmdl-data-table mdl-shadow--2dp" align="center">
 	<tbody>
 
 		<!-- Ici on reprend les objets créés  -->	
@@ -23,3 +23,5 @@
 		     
 	</tbody>
 </table>
+<br>
+<br>

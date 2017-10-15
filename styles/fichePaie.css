@@ -1,7 +1,7 @@
 .celFiche{
    text-align: center;
    color:black;
-   font-family: Arial;
+   
    font-size: 1em;
 }
 
@@ -11,7 +11,7 @@
 
 .titleFiche{
    color:black;
-   font-family: Arial;
+   
    font-size: 0.7em;
 }
 
@@ -42,7 +42,7 @@ h3,h4,h5{
 
 
 th.headCel {
-	color : white;
+   color : white;
    font-size: 0.8em;
    background-color: #1C375D;
    width: 30%;

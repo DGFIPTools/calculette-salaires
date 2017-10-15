@@ -17,8 +17,8 @@ $Grade=$_SESSION["Grade"];
   </head>
   <body>
   
-	<h3> <?php echo "Fiche de paie / ".$Grade." "."$IsStagiaire"."$QUALIF"; ?> </h3>
-  	<h4> <?php echo "Echelon : ".$Echelon." (".$Indice.")"; ?> </h4>
+	
+  	<h5> <?php echo   $Grade." "."$IsStagiaire"."$QUALIF - Echelon : ".$Echelon." (".$Indice.")"; ?> </h4>
 
     <table  border="0" align="center">
       <thead>
@@ -93,21 +93,8 @@ $Grade=$_SESSION["Grade"];
 <script type="text/javascript" src="//compteur.websiteout.net/js/35/5/0/1">
 </script> visiteurs.
 <br>
-MAJ le 24/01/2017
-<?php  
-echo $IDF ;
-?>
+MAJ le 04/05/2017
 <br>
-<br>
-<br>
-<br>
-<br>
-Version 2.0
-<br>
-Nouveautés : Calculatrice unique pour les 3 corps de la DGFIP
-<br>
-
-<br>
-    </p>
+</p>
   </body>
 </html>

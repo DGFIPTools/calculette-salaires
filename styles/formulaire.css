@@ -1,6 +1,28 @@
+
+
 table {
-    border-collapse: separate;
+   width: 95%;
 }
+
+
+@media only screen and (min-width: 600px) {
+   table {
+   	width: 85%;
+   }
+}
+
+@media only screen and (min-width: 900px) {
+   table {
+   	width: 75%;
+   }
+}
+
+@media only screen and (min-width: 1200px) {
+   table {
+   	width: 65%;
+   }
+}
+
 
 td {
     padding-top: .25em;
@@ -20,11 +42,108 @@ input {
 }
 
 td.formName {
-	text-align: right;
-   width: 30%;
+	text-align: left;
+	width: 30%;
 }
 td.formValue {
    width: 70%;
+}
+
+.rmdl-data-table {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-collapse: collapse;
+    font-size: 1.1em;
+    background-color: #fff
+}
+.rmdl-data-table thead {
+    padding-bottom: 3px
+}
+.rmdl-data-table thead .mdl-data-table__select {
+    margin-top: 0
+}
+.rmdl-data-table tbody tr {
+    position: relative;
+    height: 48px;
+    transition-duration: .28s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-property: background-color
+}
+.rmdl-data-table tbody tr.is-selected {
+    background-color: #e0e0e0
+}
+.rmdl-data-table tbody tr:hover {
+    background-color: #eee
+}
+.rmdl-data-table td,
+.rmdl-data-table th {
+    padding: 0 10px 12px;
+    text-align: left
+}
+.rmdl-data-table td:first-of-type,
+.rmdl-data-table th:first-of-type {
+    padding-left: 10px
+}
+.rmdl-data-table td:last-of-type,
+.rmdl-data-table th:last-of-type {
+    padding-right: 10px
+}
+.rmdl-data-table td,
+.rmdl-data-table th {
+    position: relative;
+    height: 48px;
+    box-sizing: border-box
+}
+.rmdl-data-table td {
+    border-top: 1px solid rgba(0, 0, 0, .12);
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    padding-top: 12px;
+    vertical-align: middle
+}
+.rmdl-data-table td .mdl-data-table__select {
+    vertical-align: middle
+}
+.rmdl-data-table th {
+    vertical-align: bottom;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-size: 12px;
+    color: rgba(0, 0, 0, .54);
+    padding-bottom: 8px
+}
+.rmdl-data-table th .mdl-data-table__header--sorted-ascending,
+.rmdl-data-table th .mdl-data-table__header--sorted-descending {
+    color: rgba(0, 0, 0, .87)
+}
+.rmdl-data-table th .mdl-data-table__header--sorted-ascending:before,
+.rmdl-data-table th .mdl-data-table__header--sorted-descending:before {
+    font-family: 'Material Icons';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    word-wrap: normal;
+    -moz-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased
+}
+.rmdl-data-table th .mdl-data-table__header--sorted-ascending:before {
+    content: "\e5d8"
+}
+.rmdl-data-table th .mdl-data-table__header--sorted-descending:before {
+    content: "\e5db"
+}
+.rmdl-data-table__select {
+    width: 16px
+}
+.rmdl-data-table__cell--non-numeric.mdl-data-table__cell--non-numeric {
+    text-align: left
 }
 
 
