@@ -12,14 +12,14 @@ if ($_POST["Echelon"]<14)
 {
 	$classe=" 2eme classe";
     $EchelonDisplay=$_POST["Echelon"];
-    
+
 }
     else if ($_POST["Echelon"]<27)
    {
    $EchelonDisplay=$_POST["Echelon"]-13;
    $classe=" 1ere classe ";
     }
-   
+
    else if ($_POST["Echelon"]<38)
    {
    $EchelonDisplay=$_POST["Echelon"]-26;
@@ -28,12 +28,12 @@ if ($_POST["Echelon"]<14)
    else{
    	$EchelonDisplay=$_POST["Echelon"]-37;
    }
-   
-   
+
+
    if ($_POST["Echelon"]<38)
 {
     $ACF= 2202/12;
-    
+
 }
 else
 {
@@ -65,16 +65,16 @@ $stag=0;
 if ($_POST["Echelon"]<8)
 {
     $PR=2733.32/12;
-    
+
 }
     else if ($_POST["Echelon"]<27)
    {$PR=3592.25/12;
     }
-   
+
    else if ($_POST["Echelon"]<38)
    {$PR=4064.54/12;
    }
-   
+
    else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==1))
 	{$PR=0;
 	 $stag=528.75;
@@ -91,12 +91,15 @@ if ($_POST["Echelon"]<8)
    {$PR=251.71;
    $stag=528.75;
 	}
-   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==5))  
+   else if (($_POST["Echelon"]>37) and ($_POST["Stag"]==5))
    {$PR=248.41;
    $stag=528.75;
 	}
 
-include 'calculTraitement.php5';
+$TPP = 278  ;
+
+	
+include 'calculTraitement.php';
 
 # Envoie des données a la fiche de paie
 $_SESSION["Grade"]="Controleur".$classe;
@@ -110,69 +113,65 @@ $_SESSION["Total_retenues"]=$Total_retenues;
 $_SESSION["Total_net"]=$Total_net;
 
 
-$elementFichePaie = array( 
+$elementFichePaie = array(
 
-					array( name => "TRAITEMENT BRUT", 
+					array( name => "TRAITEMENT BRUT",
                       value => "$Traitement_indiciaire",
-                      evaluation => "+" 
+                      evaluation => "+"
                     ),
-               array( name => "RETENUE PENSION CIVIL", 
+               array( name => "RETENUE PENSION CIVIL",
                       value => "$PC",
                       evaluation => "-",
                     ),
-               array( name => "RETENUE PENSION CIVIL IMT", 
+               array( name => "RETENUE PENSION CIVIL IMT",
                       value => "$RIMT",
                       evaluation => "-",
                     ),
-               array( name => "INDEMNITE STAGE LINEAIRE", 
+               array( name => "INDEMNITE STAGE LINEAIRE",
                       value => "$stag",
                       evaluation => "+",
-                    ), 
-               array( name => "IMT", 
+                    ),
+               array( name => "IMT",
                       value => "$IMT",
                       evaluation => "+",
                     ),
-               array( name => "IFTS", 
+               array( name => "IFTS",
                       value => "$IAT",
                       evaluation => "+",
                     ),
-               array( name => "ACF TECH.", 
+               array( name => "ACF TECH.",
                       value => "$ACF",
                       evaluation => "+",
                     ),
-               array( name => "PRIME DE RENDEMENT", 
+               array( name => "PRIME DE RENDEMENT",
                       value => "$PR",
                       evaluation => "+",
                     ),
-               array( name => "INDEMNITE DE RESIDENCE", 
+               array( name => "INDEMNITE DE RESIDENCE",
                       value => "$IR",
                       evaluation => "+",
                     ),
-               array( name => "CSG", 
+               array( name => "CSG",
                       value => "$CSG",
                       evaluation => "-",
                     ),
-               array( name => "CRDS", 
+               array( name => "CRDS",
                       value => "$CRDS",
                       evaluation => "-",
                     ),
-               array( name => "RAFP", 
+               array( name => "RAFP",
                       value => "$RAFP",
                       evaluation => "-",
                     ),
-               array( name => "CONTRIBUTION SOLIDARITE", 
-                      value => "$CS",
-                      evaluation => "-",
-                    ),
-               array( name => "TAI", 
+               array( name => "TAI",
                       value => "$TAI",
-                      evaluation => "+" 
+                      evaluation => "+"
                     )
              );
-             
+
 $_SESSION["elementFichePaie"]=$elementFichePaie;
 
-header("Location: /calcDgfip.php5?link=fichePaie.php5");
+header("Location: ./calcDgfip.php?link=fichePaie.php");
 exit;
 
 ?>

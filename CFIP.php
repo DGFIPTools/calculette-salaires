@@ -10,12 +10,12 @@
 </head>
 
   <body>
-    <form action="/CFIP1.php5" method="post" name="ts" target="_parent">
-      
+    <form action="./CFIP1.php" method="post" name="ts" target="_parent">
+
       <h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
-      
+
       <?php
-      include 'utils.php5';
+      include 'utils.php';
       $echelonClass = new formObject();
 		$echelonClass->name = "Echelon";
 		$echelonClass->formNameClass = "formName";
@@ -24,7 +24,7 @@
 		$echelonClass->formRequired = "required";
 		$echelonClass->formName = "Echelon";
 		$echelonClass->formIndexSelected = 37;
-		
+
 		$echelonClass->valueArray=array(
 		"Contrôleur 2ème classe 1er échelon","Contrôleur 2ème classe 2ème échelon","Contrôleur 2ème classe 3ème échelon",
 		"Contrôleur 2ème classe 4ème échelon","Contrôleur 2ème classe 5ème échelon","Contrôleur 2ème classe 6ème échelon",
@@ -43,7 +43,7 @@
 		"Contrôleur stagiaire 6ème échelon","Contrôleur stagiaire 7ème échelon","Contrôleur stagiaire 8ème échelon",
 		"Contrôleur stagiaire 9ème échelon","Contrôleur stagiaire 10ème échelon","Contrôleur stagiaire 11ème échelon",
 		"Contrôleur stagiaire 12ème échelon","Contrôleur stagiaire 13ème échelon");
-		
+
 		$stagClass = new formObject();
 		$stagClass->name = "Provenance des stagiaires";
 		$stagClass->formNameClass = "formName";
@@ -52,13 +52,13 @@
 		$stagClass->formRequired = "required";
 		$stagClass->formName = "Stag";
 		$stagClass->formIndexSelected = 0;
-		
+
 		$stagClass->valueArray=array("Externe sans reprise d'ancienneté",
 		"Externe avec reprise d'ancienneté",
 		"Interne Ex-Cat C AAP1 AAP2 ou ex-Cat B ou Ex-Cat A",
 		"Interne Ex-Cat C AA1",
-		"Interne ex-Cat C AA2");  
-		
+		"Interne ex-Cat C AA2");
+
 		$taiClass = new formObject();
 		$taiClass->name = "Prime Informaticiens";
 		$taiClass->formNameClass = "formName";
@@ -67,33 +67,33 @@
 		$taiClass->formRequired = "required";
 		$taiClass->formName = "TAI";
 		$taiClass->formIndexSelected = 0;
-		
+
 		$taiClass->valueArray=array("Pas de TAI","Programmeur depuis moins d'un an",
 		"Programmeur depuis plus d'un an mais moins de 2 ans et demi","Programmeur au delà de 2ans et demi",
 		"PSE  depuis moins d'un an","PSE depuis plus d'un an mais moins de 2 ans et demi","PSE au delà de 2 ans et demi");
-		
-		
+
+
 		$irClass = new formObject();
 		$irClass->name = "Indemnité de résidence";
 		$irClass->formNameClass = "formName";
 		$irClass->formRequired = "required";
 		$irClass->formName = "IR";
 		$irClass->formIndexSelected = 0;
-		
+
 		$irClass->valueArray=array("0%","1%","3%");
 
-		
+
 		$formObjectsArray = array($echelonClass,$stagClass,$taiClass,$irClass);
-		
-		include 'formulaire.php5';
+
+		include 'formulaire.php';
       ?>
-      
+
      <div class="titleForm">
         <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" formtarget="_parent" formmethod="post" value="Lancer la simulation" name="Calcul" type="submit"/>
      </div>
-     
+
      <br>
-          
+
     </form>
    </body>
 </html>

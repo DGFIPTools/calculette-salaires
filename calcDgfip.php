@@ -16,7 +16,7 @@ function hasLink(){
 }
 
 // Ici la liste des pages TODO: externaliser dans un fichier xml
-$listePages=array("AAFIP.php5","CFIP.php5","IFIP.php5");
+$listePages=array("AAFIP.php","CFIP.php","IFIP.php");
 $listePageName=array("Agents Administratifs des Finances Publiques","Contrôleur des Finances Publiques","Inspecteur des Finances Publiques");      
 
 // si un lien est fourni, alors on le met dans une variable
@@ -28,7 +28,7 @@ else{
 	$pageLinkSelected=$listePages[0];
 }
 
-if( $pageLinkSelected=="fichePaie.php5" ){
+if( $pageLinkSelected=="fichePaie.php" ){
 	$pageTitle="Fiche de paie";
 }
 else{
@@ -59,7 +59,7 @@ for($i = 0; $i < count($listePages); ++$i) {
 for($i = 0; $i < count($listePages); ++$i) {
 
 	$pageLink=$listePages[$i];
-	$pageName = basename($pageLink, ".php5");
+	$pageName = basename($pageLink, ".php");
 
 	if( $pageLink==$pageLinkSelected ){
 		$pageClass='class="active"';
@@ -82,7 +82,7 @@ for($i = 0; $i < count($listePages); ++$i) {
 for($i = 0; $i < count($listePages); ++$i) {
 
 	$pageLink=$listePages[$i];
-	$pageName = basename($pageLink, ".php5");
+	$pageName = basename($pageLink, ".php");
 
 	if( $pageLink==$pageLinkSelected ){
 		$pageClass='class="active"';
@@ -111,8 +111,8 @@ if ( hasLink()){
    include $_GET["link"];
 }
 else{
-  // par défault, on lanche AAFIP.php5
-   include 'AAFIP.php5';
+  // par défault, on lanche AAFIP.php
+   include 'AAFIP.php';
 }
 
 ?>

@@ -54,23 +54,6 @@
 				<value index="13">486</value>
 			</items>
 			
-			<!-- 1 correspond ici a Contrôleur 1ere classe voir 'grades' -->
-			<items index="1">
-				<value index="1">327</value>
-				<value index="2">332</value>
-				<value index="3">340</value>
-				<value index="4">348</value>
-				<value index="5">361</value>
-				<value index="6">375</value>
-				<value index="7">390</value>
-				<value index="8">405</value>
-				<value index="9">425</value>
-				<value index="10">445</value>
-				<value index="11">468</value>
-				<value index="12">491</value>
-				<value index="13">515</value>
-			</items>
-			
 		
 			
 	</data>
