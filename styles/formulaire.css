@@ -2,26 +2,36 @@
 
 table {
    width: 95%;
+   margin: 0 auto;
+   text-align:center;
 }
 
 
 @media only screen and (min-width: 600px) {
    table {
-   	width: 85%;
+       width: 85%;
+       margin: 0 auto;
+       text-align:center;
    }
 }
 
 @media only screen and (min-width: 900px) {
    table {
-   	width: 75%;
+       width: 75%;
+       margin: 0 auto;
+       text-align:center;
    }
 }
 
 @media only screen and (min-width: 1200px) {
    table {
-   	width: 65%;
+       width: 65%;
+       margin: 0 auto;
+       text-align:center;
    }
 }
+
+
 
 
 td {
@@ -150,8 +160,8 @@ td.formValue {
 
 select.autosize{
     font-size: 0.9em;
-	 max-width: 320px;
-    width: 100% !important;
+	 max-width: 350px;
+    width: 90%;
     text-overflow: ellipsis;
     white-space: nowrap;
   	 overflow: hidden;

@@ -1,10 +1,12 @@
 <?php
+session_start(); 
 
 $IsStagiaire=$_SESSION["stagiaire"];
 $QUALIF=$_SESSION["Qualif"];
 $Echelon=$_SESSION["Echelon"];
 $Indice=$_SESSION["Indice"];
 $Grade=$_SESSION["Grade"];
+$quotite=$_SESSION["Quotite"];
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +20,7 @@ $Grade=$_SESSION["Grade"];
   <body>
   
 	
-  	<h5> <?php echo   $Grade." "."$IsStagiaire"."$QUALIF - Echelon : ".$Echelon." (".$Indice.")"; ?> </h4>
+  	<h5> <?php echo   $Grade." "."$IsStagiaire"."$QUALIF - Echelon : ".$Echelon." (".$Indice.") (".$quotite.")"; ?> </h5>
 
     <table  border="0" align="center">
       <thead>
@@ -78,22 +80,35 @@ $Grade=$_SESSION["Grade"];
           <td class="footCelColor footCelText"><?php echo $_SESSION["Total_retenues"]; ?></td>
         </tr>
         <tr  class="footSpaceValue">
-          <td/>
-          <td/>
-          <td/>
+          <td>
+          <td>
+          <td>
         </tr>
         <tr>
+          <td class="titleFicheColor">NET A PAYER AVANT IMPÔT SUR LE REVENU</td>
+          <td class="celFicheColor footCelText"></td>
+		   <td id="paye_net" class="footCelText celFicheColor"><?php echo $_SESSION["Total_net"]." &euro;"; ?></td>
+        </tr>
+		
+		 <tr>
+          <td class="titleFiche">IMPÔT SUR LE REVENU ( Taux de <?php echo $_SESSION["PLTaux"]."%"?> )</td>
+          <td class="celFiche"></td>
+         <td class="celFiche" id="impot_revenu"><?php echo $_SESSION["PLSource"]." &euro;"; ?></td>
+        </tr>
+		
+		 <tr>
           <td class="footCelColor">NET A PAYER</td>
           <td class="footCelColor footCelText"></td>
-         <td class="footCelText footCelColor"><?php echo $_SESSION["Total_net"]." &euro;"; ?></td>
+         <td id="paye_net_ps" class="footCelText footCelColor"><?php echo $_SESSION["Total_net_ps"]." &euro;"; ?></td>
         </tr>
       </tbody>
     </table>
     <br/>
-<script type="text/javascript" src="//compteur.websiteout.net/js/35/5/0/1">
-</script> visiteurs.
+<?php 
+include 'compteur.php';
+?>
 <br>
-MAJ le 04/05/2017
+
 <br>
 </p>
   </body>

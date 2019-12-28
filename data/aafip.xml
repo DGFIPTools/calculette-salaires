@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dgfip>
+	
+
+	<data category="pr">
+		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
+	
+			<items index="0">
+                <value startEch="0" endEch="13" isRIF="0">1690.77</value>
+				<value startEch="0" endEch="13" isRIF="1">1769.85</value>
+			</items>
+
+			<items index="1">
+             	<value startEch="0" endEch="13" isRIF="0">1690.77</value>
+				<value startEch="0" endEch="13" isRIF="1">1769.85</value>
+			</items>
+
+			<items index="2">
+				<value startEch="0" endEch="13" isRIF="0">1809.39</value>
+				<value startEch="0" endEch="13" isRIF="1">1888.47</value>
+			</items>
+
+			<items index="3">
+				<value startEch="0" endEch="13" isRIF="0">1809.39</value>
+				<value startEch="0" endEch="13" isRIF="1">1888.47</value>
+			</items>
+			
+		
+			
+	</data>
+
+	<data category="stag">
+		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
+			<value index="0" name="Non">0</value>
+			<value index="1" name="Externe sans ancienneté">0</value>
+		    <value index="2" name="Externe avec ancienneté">83.33</value>
+			<value index="3" name="Interne Ex- AAP">258.30</value>
+			<value index="4" name="Interne Ex- AA 1e classe" >251.71</value>
+			<value index="5" name="Interne Ex- AA 2e classe" >248.41</value>
+	</data>
+	
+
+	<data category="tai">
+		<!-- TODO: changer ce système -->
+		<!-- l'index des TAI permet de retrouver l'index correspondant à la qualification-->
+		<value index="0" points="0" qualif="">Aucune</value>
+		<value index="1" points="83" qualif="PAU">PAU &lt; 1 an</value>
+		<value index="2" points="94" qualif="PAU">PAU &gt; 1 an et &lt; 2,5 ans</value>  
+		<value index="3" points="118" qualif="PAU">PAU &gt; 2,5 ans</value>  
+	</data>
+	
+
+
+	<data category="prime_stag">
+	<!-- Valeur 2019 -->
+		<value>446.50</value>
+	</data>
+  
+	<data category="acf">
+	<!-- Valeur 2019 -->
+		<value>2202</value>
+	</data>
+
+      <!-- Transfers primes/points-->
+    <data category="tpp_base">
+	<!-- Valeur 2019 -->
+		<value>167</value>
+	</data>
+
+
+    <!-- Transfers primes/points-->
+    <data category="tpp_points">
+	<!-- Valeur 2019 -->
+		<value>3</value>
+	</data>
+	
+
+	<data category="grades">
+		<!-- l'index des grades permet de retrouver l'index correspondant dans les 'echelons-->
+		<value index="0">Agent Administratif 2ème classe</value>
+		<value index="1">Agent Administratif 1ere classe</value>
+		<value index="2">Agent Administratif Principal 2ème classe</value>
+		<value index="3">Agent Administratif Principal 1ere classe</value>
+	</data>
+	
+	<data category="echelons">
+		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
+	
+			
+			<!-- 0 correspond ici a Agent Administratif 2ème classe voir 'grades' -->
+			<items index="0">
+				<value name="1er échelon" index="1">326</value>
+				<value name="2eme échelon" index="2">327</value>
+				<value name="3eme échelon" index="3">328</value>
+				<value name="4eme échelon" index="4">329</value>
+				<value name="5eme échelon" index="5">330</value>
+				<value name="6eme échelon" index="6">332</value>
+				<value name="7eme échelon" index="7">335</value>
+				<value name="8eme échelon" index="8">339</value>
+				<value name="9eme échelon" index="9">343</value>
+				<value name="10eme échelon" index="10">354</value>
+				<value name="11eme échelon" index="11">367</value>
+			</items>
+			
+			<!-- 1 correspond ici a Agent Administratif 1ere classe voir 'grades' -->
+			<items index="1">
+				<value name="1er échelon" index="1">328</value>
+				<value name="2eme échelon" index="2">330</value>
+				<value name="3eme échelon" index="3">333</value>
+				<value name="4eme échelon" index="4">336</value>
+				<value name="5eme échelon" index="5">345</value>
+				<value name="6eme échelon" index="6">351</value>
+				<value name="7eme échelon" index="7">364</value>
+				<value name="8eme échelon" index="8">380</value>
+				<value name="9eme échelon" index="9">390</value>
+				<value name="10eme échelon" index="10">402</value>
+				<value name="11eme échelon" index="11">411</value>
+				<value name="12eme échelon" index="12">418</value>
+			</items>
+
+			<!-- 2 correspond ici a Agent Administratif Principal 2ème classe voir 'grades' -->
+			<items index="2">
+				<value name="1er échelon" index="1">328</value>
+				<value name="2eme échelon" index="2">330</value>
+				<value name="3eme échelon" index="3">333</value>
+				<value name="4eme échelon" index="4">336</value>
+				<value name="5eme échelon" index="5">345</value>
+				<value name="6eme échelon" index="6">351</value>
+				<value name="7eme échelon" index="7">364</value>
+				<value name="8eme échelon" index="8">380</value>
+				<value name="9eme échelon" index="9">390</value>
+				<value name="10eme échelon" index="10">402</value>
+				<value name="11eme échelon" index="11">411</value>
+				<value name="12eme échelon" index="12">418</value>
+			</items>
+			
+			<!-- 3 Agent Administratif Principal 1ere classe voir 'grades' -->
+			<items index="3">
+				<value name="1er échelon" index="1">350</value>
+				<value name="2eme échelon" index="2">358</value>
+				<value name="3eme échelon" index="3">368</value>
+				<value name="4eme échelon" index="4">380</value>
+				<value name="5eme échelon" index="5">393</value>
+				<value name="6eme échelon" index="6">403</value>
+				<value name="7eme échelon" index="7">415</value>
+				<value name="8eme échelon" index="8">430</value>
+				<value name="9eme échelon" index="9">450</value>
+				<value name="10eme échelon" index="10">466</value>
+			</items>
+			
+	</data>
+</dgfip>

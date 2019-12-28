@@ -1,16 +1,21 @@
-<?php
+<?php 
 
 function floor_prec($x, $prec) {
    return floor($x*pow(10,$prec))/pow(10,$prec);
 }
 
+
+
 /*déclaration des variables*/
 $INM="";
 
 
-# chargement du fichier xml contenant les données
-$dataFile = 'data/data.xml';
-$xml = simplexml_load_file($dataFile);
+
+
+
+
+$tempPartielObj=$xml->xpath("//data[@category='quotite']/value[@index='".$quotiteIndex."']");
+$tempPartiel=floatval($tempPartielObj[0]->attributes()->reel);
 
 # point d'indice chargé depuis le xml
 $pointIndiceTab=($xml->xpath("//data[@category='point_indice']/value"));
@@ -22,29 +27,65 @@ $RetenuPC = floatval($retenuPcTab[0]);
 
 # Valeur de l'IMT
 $IMTTab=($xml->xpath("//data[@category='imt']/value"));
-$IMT = floatval($IMTTab[0]);
+$IMT = floatval($IMTTab[0])*$tempPartiel;
+
+$echelons=($xmlGrade->xpath("//data[@category='echelons']/items[@index='".$gradeIndex."']/value"));
+$echelonDisplay=(string)($echelons[$echelonVal]->attributes()->index);
+
+
+
+
+$TPP_base =floatval($xmlGrade->xpath("//data[@category='tpp_base']/value")[0]);
+$TPP_points =floatval($xmlGrade->xpath("//data[@category='tpp_points']/value")[0]);
+
+$gradeValue=($xmlGrade->xpath("//data[@category='pr']/items[@index='".$gradeIndex."']/value[@endEch>=".$echelonVal." and @startEch<=".$echelonVal." and @isRIF=".$isRifIndex."]"));
+
+
+
+
 
 
 
 /*calcul de l'INM de l'IAT de l'IR de l'ACF et la TAI*/
-$INM=$Tableau_Echelon[$_POST["Echelon"]];
-$Traitement_indiciaire= $INM*$Point;
+$INM=$echelons[$echelonVal];
+$Traitement_indiciaire= $INM*$Point*$tempPartiel;
 $IAT=0.0833*$Traitement_indiciaire;
 
-if ($_POST["IR"]==1)
-{$IR_VALUE=0;}
-elseif ($_POST["IR"]==2)
-{$IR_VALUE=1;}
-elseif ($_POST["IR"]==3)
-{$IR_VALUE=3;}
+$irValueArray=($xml->xpath("//data[@category='irs']/value[@index='".$irIndex."']"));
+$IR_VALUE=floatval($irValueArray[0]->attributes()->reel);
+$IR=$IR_VALUE*$Traitement_indiciaire;
 
-$IR=$IR_VALUE*$Traitement_indiciaire/100;
+#Calcul des primes TAI
 
+
+$TAI_OBJ=($xmlGrade->xpath("//data[@category='tai']/value")[$taiIndex]);
+$BASE_TAI=$Point*12*494/10000;
+$QUALIF=$TAI_OBJ->attributes()->qualif;
+
+switch ($stagIndex) {
+   # Je ne suis pas stagiaire 
+     case 0:
+       $TAI=floatval($TAI_OBJ->attributes()->points)*$BASE_TAI*$tempPartiel;
+       $stag=0;
+       $PR=floatval($gradeValue[0])/12;
+       $ACF_ANNUEL=($xmlGrade->xpath("//data[@category='acf']/value"));
+       $ACF = floatval($ACF_ANNUEL[0])*$tempPartiel;
+       $ACF = $ACF / 12;
+       break;
+    # Stagiaire 
+     default :
+         $ACF=0;
+         $TAI=0;
+         $PR=floatval($xmlGrade->xpath("//data[@category='stag']/value[@index=".$stagIndex."]")[0]);
+         $stag=floatval($xmlGrade->xpath("//data[@category='prime_stag']/value")[0]);
+         break;
+ }
 
 
 
 /*calcul des Traitements et cotisations */
 $Traitement_Brut=$Traitement_indiciaire+$IMT+$IAT+$PR+$ACF+$IR+$TAI;
+$PLSource = ($Traitement_indiciaire+$IMT+$PR+$IR+$ACF) * floatval($psIndex) / 100;
 $Traitement_Brut=floor_prec($Traitement_Brut, 2);
 $PC=$Traitement_indiciaire*$RetenuPC;
 $RIMT=$IMT*20/100;
@@ -68,7 +109,8 @@ $CS=0.01*$CS_BASE;
 
 $CSG_INDM = (($Traitement_Brut* 0.016702) - $CS ) * 1.1053;
 
-$TPP = $TPP / 12;
+$PR = $PR * $tempPartiel;
+$TPP = ($TPP_base - ($TPP_points*$Point)) / 12;
 
 
 
@@ -77,23 +119,25 @@ $TPP = $TPP / 12;
 $CS=floor_prec($CS, 2);
 $stag=floor_prec($stag, 2);
 $RIMT=round($RIMT,2);
-$IMT=floor_prec($IMT, 2);
+$IMT=round($IMT, 2);
 $CSG=floor_prec($CSG, 2);
 $CSG_INDM=floor_prec($CSG_INDM, 2);
 $CRDS=floor_prec($CRDS, 2);
 $RAFP=floor_prec($RAFP, 2);
 $ACF = floor_prec($ACF, 2);
 $TPP = floor_prec($TPP, 2);
-$IAT= floor_prec($IAT, 2);
+$IAT= round($IAT, 2);
 $PR = floor_prec($PR, 2);
 $PC=floor_prec($PC, 2);
 $IR=floor_prec($IR, 2);
 $TAI=floor_prec($TAI, 2);
+$PLSource=floor_prec($PLSource, 2);
 $Traitement_indiciaire=round($Traitement_indiciaire,2);
 
 $Total_retenues=$PC+$CSG+$CRDS+$RIMT+$RAFP+$CS+$TPP;
 $Total_revenues=$stag+$Traitement_Brut+$CSG_INDM;
 $Total_net=$Total_revenues-$Total_retenues;
+$Total_net_ps=$Total_net-$PLSource;
 
 # Formattage des données
 $Traitement_Brut=number_format(($Traitement_Brut), 2, ',', ' ');
@@ -113,8 +157,10 @@ $PC=number_format($PC, 2, ',', ' ');
 $IR=number_format($IR, 2, ',', ' ');
 $CS=number_format($CS, 2, ',', ' ');
 $TAI=number_format($TAI, 2, ',', ' ');
+$PLSource=number_format($PLSource, 2, ',', ' ');
 $Total_net=number_format($Total_net, 2, ',', ' ');
 $Total_retenues=number_format($Total_retenues, 2, ',', ' ');
 $Traitement_indiciaire= number_format($Traitement_indiciaire, 2, ',', ' ');
+$Total_net_ps=number_format($Total_net_ps, 2, ',', ' ');
 
 ?>
