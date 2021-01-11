@@ -6,12 +6,20 @@
 		<!-- l'index des indices permet d'obtenir la valeur numéraire de l'indice en fonction du grade-->
 	
 			<items index="0">
+<<<<<<< HEAD
                 <value startEch="0" endEch="13" isRIF="0">1690.77</value>
+=======
+                <value startEch="0" endEch="12" isRIF="0">1690.77</value>
+>>>>>>> 513fd49... MAJ 2021
 				<value startEch="0" endEch="13" isRIF="1">1769.85</value>
 			</items>
 
 			<items index="1">
+<<<<<<< HEAD
              	<value startEch="0" endEch="13" isRIF="0">1690.77</value>
+=======
+             	<value startEch="0" endEch="12" isRIF="0">1690.77</value>
+>>>>>>> 513fd49... MAJ 2021
 				<value startEch="0" endEch="13" isRIF="1">1769.85</value>
 			</items>
 
@@ -77,10 +85,16 @@
 
 	<data category="grades">
 		<!-- l'index des grades permet de retrouver l'index correspondant dans les 'echelons-->
+<<<<<<< HEAD
 		<value index="0">Agent Administratif 2ème classe</value>
 		<value index="1">Agent Administratif 1ere classe</value>
 		<value index="2">Agent Administratif Principal 2ème classe</value>
 		<value index="3">Agent Administratif Principal 1ere classe</value>
+=======
+		<value index="0">Agent Administratif (C1)</value>
+		<value index="1">Agent Administratif Principal 2ème classe (C2)</value>
+		<value index="2">Agent Administratif Principal 1ere classe (C3)</value>
+>>>>>>> 513fd49... MAJ 2021
 	</data>
 	
 	<data category="echelons">
@@ -89,6 +103,7 @@
 			
 			<!-- 0 correspond ici a Agent Administratif 2ème classe voir 'grades' -->
 			<items index="0">
+<<<<<<< HEAD
 				<value name="1er échelon" index="1">326</value>
 				<value name="2eme échelon" index="2">327</value>
 				<value name="3eme échelon" index="3">328</value>
@@ -136,6 +151,41 @@
 			
 			<!-- 3 Agent Administratif Principal 1ere classe voir 'grades' -->
 			<items index="3">
+=======
+				<value name="1er échelon" index="1">330</value>
+				<value name="2eme échelon" index="2">331</value>
+				<value name="3eme échelon" index="3">332</value>
+				<value name="4eme échelon" index="4">333</value>
+				<value name="5eme échelon" index="5">335</value>
+				<value name="6eme échelon" index="6">337</value>
+				<value name="7eme échelon" index="7">342</value>
+				<value name="8eme échelon" index="8">348</value>
+				<value name="9eme échelon" index="9">354</value>
+				<value name="10eme échelon" index="10">363</value>
+				<value name="11eme échelon" index="11">372</value>
+				<value name="12eme échelon" index="12">382</value>
+			</items>
+			
+		
+			<!-- 1 correspond ici a Agent Administratif Principal 2ème classe voir 'grades' -->
+			<items index="1">
+				<value name="1er échelon" index="1">332</value>
+				<value name="2eme échelon" index="2">334</value>
+				<value name="3eme échelon" index="3">336</value>
+				<value name="4eme échelon" index="4">338</value>
+				<value name="5eme échelon" index="5">346</value>
+				<value name="6eme échelon" index="6">354</value>
+				<value name="7eme échelon" index="7">365</value>
+				<value name="8eme échelon" index="8">380</value>
+				<value name="9eme échelon" index="9">392</value>
+				<value name="10eme échelon" index="10">404</value>
+				<value name="11eme échelon" index="11">412</value>
+				<value name="12eme échelon" index="12">420</value>
+			</items>
+			
+			<!-- 3 Agent Administratif Principal 1ere classe voir 'grades' -->
+			<items index="2">
+>>>>>>> 513fd49... MAJ 2021
 				<value name="1er échelon" index="1">350</value>
 				<value name="2eme échelon" index="2">358</value>
 				<value name="3eme échelon" index="3">368</value>
@@ -145,7 +195,11 @@
 				<value name="7eme échelon" index="7">415</value>
 				<value name="8eme échelon" index="8">430</value>
 				<value name="9eme échelon" index="9">450</value>
+<<<<<<< HEAD
 				<value name="10eme échelon" index="10">466</value>
+=======
+				<value name="10eme échelon" index="10">473</value>
+>>>>>>> 513fd49... MAJ 2021
 			</items>
 			
 	</data>

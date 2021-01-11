@@ -18,8 +18,14 @@ $tempPartielObj=$xml->xpath("//data[@category='quotite']/value[@index='".$quotit
 $tempPartiel=floatval($tempPartielObj[0]->attributes()->reel);
 
 # point d'indice chargé depuis le xml
+<<<<<<< HEAD
 $pointIndiceTab=($xml->xpath("//data[@category='point_indice']/value"));
 $Point = floatval($pointIndiceTab[0]);
+=======
+$IsStagiaire=$_SESSION["stagiaire"];
+$Point = $_SESSION["pointIndice"];
+
+>>>>>>> 513fd49... MAJ 2021
 
 # Valeur de la retenu de pension civile
 $retenuPcTab=($xml->xpath("//data[@category='retenu_pension_civile']/value"));
@@ -91,9 +97,19 @@ $PC=$Traitement_indiciaire*$RetenuPC;
 $RIMT=$IMT*20/100;
 
 # CSG
+<<<<<<< HEAD
 $CSGRawRate=($xml->xpath("//data[@category='csg']/value"));
 $CSGRate = floatval($CSGRawRate[0]);
 $CSG=$CSGRate*$Traitement_Brut*98.25/100;
+=======
+$CSGRawRate=($xml->xpath("//data[@category='csg_deductible']/value"));
+$CSGNonDeductibleRawRate=($xml->xpath("//data[@category='csg_nondeductible']/value"));
+$CSGRate = floatval($CSGRawRate[0]);
+$CSGNonDeductibleRate = floatval($CSGNonDeductibleRawRate[0]);
+
+$CSG=$CSGRate*($Traitement_Brut)*98.25/100;
+$CSGNonDeductible=$CSGNonDeductibleRate*($Traitement_Brut)*98.25/100;
+>>>>>>> 513fd49... MAJ 2021
 
 # CRDS
 $CRDSRawRate=($xml->xpath("//data[@category='crds']/value"));
@@ -104,13 +120,21 @@ $RAFP_BRUT=($IMT+$IAT+$PR+$ACF+$IR+$TAI);
 $RAFP_PLAFOND=$Traitement_indiciaire*0.2;
 $RAFP=0.05*(min($RAFP_BRUT,$RAFP_PLAFOND));
 
+<<<<<<< HEAD
 $CS_BASE=$Traitement_Brut-($RAFP+$PC+$RIMT);
 $CS=0.01*$CS_BASE;
+=======
+$CS=$Traitement_Brut*0.01;
+>>>>>>> 513fd49... MAJ 2021
 
 $CSG_INDM = (($Traitement_Brut* 0.016702) - $CS ) * 1.1053;
 
 $PR = $PR * $tempPartiel;
+<<<<<<< HEAD
 $TPP = ($TPP_base - ($TPP_points*$Point)) / 12;
+=======
+$TPP = (($TPP_base*$tempPartiel) - ($TPP_points*$Point)) / 12;
+>>>>>>> 513fd49... MAJ 2021
 
 
 
@@ -121,12 +145,17 @@ $stag=floor_prec($stag, 2);
 $RIMT=round($RIMT,2);
 $IMT=round($IMT, 2);
 $CSG=floor_prec($CSG, 2);
+<<<<<<< HEAD
+=======
+$CSGNonDeductible=floor_prec($CSGNonDeductible, 2);
+>>>>>>> 513fd49... MAJ 2021
 $CSG_INDM=floor_prec($CSG_INDM, 2);
 $CRDS=floor_prec($CRDS, 2);
 $RAFP=floor_prec($RAFP, 2);
 $ACF = floor_prec($ACF, 2);
 $TPP = floor_prec($TPP, 2);
 $IAT= round($IAT, 2);
+<<<<<<< HEAD
 $PR = floor_prec($PR, 2);
 $PC=floor_prec($PC, 2);
 $IR=floor_prec($IR, 2);
@@ -135,6 +164,16 @@ $PLSource=floor_prec($PLSource, 2);
 $Traitement_indiciaire=round($Traitement_indiciaire,2);
 
 $Total_retenues=$PC+$CSG+$CRDS+$RIMT+$RAFP+$CS+$TPP;
+=======
+$PR = round($PR, 2);
+$PC=floor_prec($PC, 2);
+$IR=floor_prec($IR, 2);
+$TAI=round($TAI, 2);
+$PLSource=floor_prec($PLSource, 2);
+$Traitement_indiciaire=round($Traitement_indiciaire,2);
+
+$Total_retenues=$PC+$CSG+$CSGNonDeductible+$CRDS+$RIMT+$RAFP+$TPP;
+>>>>>>> 513fd49... MAJ 2021
 $Total_revenues=$stag+$Traitement_Brut+$CSG_INDM;
 $Total_net=$Total_revenues-$Total_retenues;
 $Total_net_ps=$Total_net-$PLSource;
@@ -145,6 +184,10 @@ $Total_revenues=number_format($Total_revenues, 2, ',', ' ');
 $stag=number_format($stag, 2, ',', ' ');
 $IMT=number_format($IMT, 2, ',', ' ');
 $CSG=number_format($CSG, 2, ',', ' ');
+<<<<<<< HEAD
+=======
+$CSGNonDeductible=number_format($CSGNonDeductible, 2, ',', ' ');
+>>>>>>> 513fd49... MAJ 2021
 $CSG_INDM=number_format($CSG_INDM, 2, ',', ' ');
 $TPP=number_format($TPP, 2, ',', ' ');
 $CRDS=number_format($CRDS, 2, ',', ' ');

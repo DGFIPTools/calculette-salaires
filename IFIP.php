@@ -1,5 +1,12 @@
 <?php
+<<<<<<< HEAD
   session_start();?>
+=======
+if(!isset($_SESSION)){ 
+  session_start();
+}
+?>
+>>>>>>> 513fd49... MAJ 2021
 <!DOCTYPE html>
 <html>
 <head>

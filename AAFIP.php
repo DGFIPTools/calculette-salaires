@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION)){ 
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +28,20 @@
      <h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
 
       <?php
+<<<<<<< HEAD
       include 'utils.php';
 	  $gradeId=(max($_GET['grade']-1,0));
 	  
+=======
+        include 'utils.php';
+
+		 if(isset($_GET["Grade"])) {
+            $gradeId=(max($_GET['Grade']-1,0));
+        }
+        else{
+            $gradeId=0;
+        }
+>>>>>>> 513fd49... MAJ 2021
 
 	  
 		# chargement du fichier xml contenant les données

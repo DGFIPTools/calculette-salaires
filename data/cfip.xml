@@ -71,7 +71,11 @@
     <!-- Transfers primes/points-->
     <data category="tpp_points">
 	<!-- Valeur 2019 -->
+<<<<<<< HEAD
 		<value>4</value>
+=======
+		<value>5</value>
+>>>>>>> 513fd49... MAJ 2021
 	</data>
 	
 	

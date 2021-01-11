@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dgfip>
-	<data category="point_indice">
+	<data category="pointIndice">
 	  <!-- Valeur Février 2017 -->
 		<value>4.6860</value>
 	</data>
@@ -17,10 +17,17 @@
 		<value>0.1110</value>
 	</data>
 	
-	<data category="csg">
-	<!-- Valeur 2018 -->
-		<value>0.092</value>
+	<data category="csg_deductible">
+	<!-- Valeur 2019 -->
+		<value>0.068</value>
 	</data>
+	
+	<data category="csg_nondeductible">
+	<!-- Valeur 2019 -->
+		<value>0.024</value>
+	</data>
+	
+	
 	
 	<data category="crds">
 	<!-- Valeur 2018 -->
