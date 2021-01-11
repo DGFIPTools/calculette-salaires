@@ -45,12 +45,9 @@ function doReload(name,value){
 	}
 	
 
-<<<<<<< HEAD
-=======
 
 	
 
->>>>>>> 513fd49... MAJ 2021
 	var stateObj = history.state;
 	if(stateObj == undefined) {
 		stateObj = {};
@@ -94,14 +91,10 @@ function doReload(name,value){
 				$isReloadTxt="onChange='doReload(\"".$formObject->formName."\",this.value);'";
 			}
 			
-<<<<<<< HEAD
-			$isHelp=$formObject->helpText;
-=======
             $isHelp="";
             if(property_exists($formObject,'helpText')){
 			    $isHelp=$formObject->helpText;
             }
->>>>>>> 513fd49... MAJ 2021
 
 			echo "\n<tr>";
 			echo "\n<td class='"."$formObject->formNameClass"."'>"."$formObject->name"."<br></td>";
@@ -122,42 +115,6 @@ function doReload(name,value){
 
 			}
 			echo "\n</td>";
-<<<<<<< HEAD
-			echo "\n<td class ='"."$formObject->formValueClass"."'>";
-	
-			#
-			$isInput=$formObject->formType;			
-			if( ! empty($isInput)){
-					
-					echo '<input '.$isReloadTxt.' type="'.$isInput.'" name='."$formObject->formName".' placeholder="Ex : 5,6" step="0.1" min="0" max="43"></input>';
-			}
-			# Select classique
-			else{
-					echo "\n<select ".$isReloadTxt."class='"."$formObject->formSelectClass"."'  required='"."$formObject->formRequired"."' name='"."$formObject->formName"."'>";
-
-					for($i = 0; $i < count($formObject->valueArray); ++$i) {
-						($i == ($formObject->formIndexSelected))?$optionSelected=' selected="selected"':$optionSelected='';
-						echo "\n<option".$optionSelected." value='".($i+1)."'>".$formObject->valueArray[$i]."</option>";
-					}
-					echo "\n</select>";
-			}
-		
-			if($isReload=="1"){
-				
-				if( ! empty($isInput)){
-					echo '<script type="text/javascript">',
-					'document.getElementsByName("'.$formObject->formName.'")[0].value=history.state["'.$formObject->formName.'"];',
-					'</script>';
-				}
-				else{
-					 echo '<script type="text/javascript">',
-					'document.getElementsByName("'.$formObject->formName.'")[0].selectedIndex=history.state["'.$formObject->formName.'"];',
-					'</script>';
-				}
-					
-	
-			}
-=======
             $classObject="";
             if(property_exists($formObject,'formValueClass')){
                 $classObject="$formObject->formValueClass";
@@ -209,7 +166,6 @@ function doReload(name,value){
 				
 	
 			}
->>>>>>> 513fd49... MAJ 2021
 
 			echo "\n</td>";
 			echo "\n</tr>\n";

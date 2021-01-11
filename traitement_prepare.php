@@ -89,15 +89,11 @@ $elementFichePaie = array(
                       'value' => "$CSG_INDM",
                       'evaluation' => "+",
                     ),
-<<<<<<< HEAD
-               array( 'name' => "CSG",
-=======
                array( 'name' => "CSG NON DEDUCTIBLE",
                       'value' => "$CSGNonDeductible",
                       'evaluation' => "-",
                     ),
 			   array( 'name' => "CSG DEDUCTIBLE",
->>>>>>> 513fd49... MAJ 2021
                       'value' => "$CSG",
                       'evaluation' => "-",
                     ),
@@ -120,12 +116,6 @@ $elementFichePaie = array(
              );
 
   $_SESSION["elementFichePaie"]=$elementFichePaie;
-<<<<<<< HEAD
-  header('Location: http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . 'calcDgfip.php?link=fichePaie'); 
-    exit
-?>
-=======
   header('Location: http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['REQUEST_URI']) . '/calcDgfip.php?link=fichePaie'); 
     exit
 ?>
->>>>>>> 513fd49... MAJ 2021
