@@ -1,99 +1,159 @@
+<?php
+if (! isset($_SESSION)) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
- <link rel="stylesheet" type="text/css" href="styles/adaptive.css"/>
-  <link rel="stylesheet" type="text/css" href="styles/formulaire.css"/>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" type="text/css" href="styles/adaptive.css" />
+<link rel="stylesheet" type="text/css" href="styles/formulaire.css" />
 <title>Calcul traitement et salaire Contrôleur des Finances Publiques</title>
-<META name="keywords" content="salaire, calculateur, TSPEI, TSDD, TSPDD, TSCDD, TSCEI, IFIP, CFiP, CTRL, Inspecteur des finances publiques">
-<meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+<META name="keywords"
+	content="salaire, calculateur, TSPEI, TSDD, TSPDD, TSCDD, TSCEI, IFIP, CFiP, CTRL, Inspecteur des finances publiques">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 </head>
 
-  <body>
-    <form action="./CFIP1.php" method="post" name="ts" target="_parent">
+<body>
+	<form action="./traitement_prepare.php" method="post" name="ts"
+		target="_parent">
 
-      <h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
+
+
+		<input type="hidden" name="data_xml" value="cfip">
+
+		<h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
+	  
+	  
 
       <?php
-      include 'utils.php';
-      $echelonClass = new formObject();
-		$echelonClass->name = "Echelon";
-		$echelonClass->formNameClass = "formName";
-		$echelonClass->formValueClass = "formValue";
-		$echelonClass->formSelectClass = "autosize";
-		$echelonClass->formRequired = "required";
-		$echelonClass->formName = "Echelon";
-		$echelonClass->formIndexSelected = 37;
+    include 'utils.php';
+    if (isset($_GET["Grade"])) {
+        $gradeId = (max($_GET['Grade'] - 1, 0));
+    } else {
+        $gradeId = 0;
+    }
 
-		$echelonClass->valueArray=array(
-		"Contrôleur 2ème classe 1er échelon","Contrôleur 2ème classe 2ème échelon","Contrôleur 2ème classe 3ème échelon",
-		"Contrôleur 2ème classe 4ème échelon","Contrôleur 2ème classe 5ème échelon","Contrôleur 2ème classe 6ème échelon",
-		"Contrôleur 2ème classe 7ème échelon","Contrôleur 2ème classe 8ème échelon","Contrôleur 2ème classe 9ème échelon",
-		"Contrôleur 2ème classe 10ème échelon","Contrôleur 2ème classe 11ème échelon","Contrôleur 2ème classe 12ème échelon","Contrôleur 2ème classe 13ème échelon",
-		"Contrôleur 1ère classe 1er échelon","Contrôleur 1ère classe 2ème échelon","Contrôleur 1ère classe 3ème échelon",
-		"Contrôleur 1ère classe 4ème échelon","Contrôleur 1ère classe 5ème échelon","Contrôleur 1ère classe 6ème échelon",
-		"Contrôleur 1ère classe 7ème échelon","Contrôleur 1ère classe 8ème échelon","Contrôleur 1ère classe 9ème échelon",
-		"Contrôleur 1ère classe 10ème échelon","Contrôleur 1ère classe 11ème échelon","Contrôleur 1ère classe 12ème échelon","Contrôleur 1ère classe 13ème échelon",
-		"Contrôleur Principal 1er échelon","Contrôleur Principal 2ème échelon","Contrôleur Principal 3ème échelon",
-		"Contrôleur Principal 4ème échelon","Contrôleur Principal 5ème échelon","Contrôleur Principal 6ème échelon",
-		"Contrôleur Principal 7ème échelon","Contrôleur Principal 8ème échelon","Contrôleur Principal 9ème échelon",
-		"Contrôleur Principal 10ème échelon","Contrôleur Principal 11ème échelon",
-		"Contrôleur stagiaire 1er échelon","Contrôleur stagiaire 2ème échelon",
-		"Contrôleur stagiaire 3ème échelon","Contrôleur stagiaire 4ème échelon","Contrôleur stagiaire 5ème échelon",
-		"Contrôleur stagiaire 6ème échelon","Contrôleur stagiaire 7ème échelon","Contrôleur stagiaire 8ème échelon",
-		"Contrôleur stagiaire 9ème échelon","Contrôleur stagiaire 10ème échelon","Contrôleur stagiaire 11ème échelon",
-		"Contrôleur stagiaire 12ème échelon","Contrôleur stagiaire 13ème échelon");
+    // chargement du fichier xml contenant les données
+    $dataFile = 'data/cfip.xml';
+    $xml = simplexml_load_file($dataFile);
 
-		$stagClass = new formObject();
-		$stagClass->name = "Provenance des stagiaires";
-		$stagClass->formNameClass = "formName";
-		$stagClass->formValueClass = "formValue";
-		$stagClass->formSelectClass = "autosize";
-		$stagClass->formRequired = "required";
-		$stagClass->formName = "Stag";
-		$stagClass->formIndexSelected = 0;
+    $dataGenericFile = 'data/data.xml';
+    $xmlGeneric = simplexml_load_file($dataGenericFile);
 
-		$stagClass->valueArray=array("Externe sans reprise d'ancienneté",
-		"Externe avec reprise d'ancienneté",
-		"Interne Ex-Cat C AAP1 AAP2 ou ex-Cat B ou Ex-Cat A",
-		"Interne Ex-Cat C AA1",
-		"Interne ex-Cat C AA2");
+    // Echelons
+    $quotiteArray = ($xmlGeneric->xpath("//data[@category='quotite']/value"));
+    $echelonsArray = ($xml->xpath("//data[@category='echelons']/items[@index='" . $gradeId . "']/value/@name"));
+    $gradeArray = ($xml->xpath("//data[@category='grades']/value"));
+    $taiArray = ($xml->xpath("//data[@category='tai']/value"));
+    $irValueArray = ($xmlGeneric->xpath("//data[@category='irs']/value"));
+    $stagArray = ($xml->xpath("//data[@category='stag']/value/@name"));
+    $help_ir = ($xmlGeneric->xpath("//data[@category='help_ir']/value")[0]);
 
-		$taiClass = new formObject();
-		$taiClass->name = "Prime Informaticiens";
-		$taiClass->formNameClass = "formName";
-		$taiClass->formValueClass = "formValue";
-		$taiClass->formSelectClass = "autosize";
-		$taiClass->formRequired = "required";
-		$taiClass->formName = "TAI";
-		$taiClass->formIndexSelected = 0;
+    $gradeClass = new formObject();
+    $gradeClass->name = "Grade";
+    $gradeClass->formNameClass = "formName";
+    $gradeClass->formValueClass = "formValue";
+    $gradeClass->formSelectClass = "autosize";
+    $gradeClass->formRequired = "required";
+    $gradeClass->formName = "Grade";
+    $gradeClass->formIndexSelected = $gradeId;
+    $gradeClass->valueArray = $gradeArray;
 
-		$taiClass->valueArray=array("Pas de TAI","Programmeur depuis moins d'un an",
-		"Programmeur depuis plus d'un an mais moins de 2 ans et demi","Programmeur au delà de 2ans et demi",
-		"PSE  depuis moins d'un an","PSE depuis plus d'un an mais moins de 2 ans et demi","PSE au delà de 2 ans et demi");
+    $echelonClass = new formObject();
+    $echelonClass->name = "Echelon";
+    $echelonClass->formNameClass = "formName";
+    $echelonClass->formValueClass = "formValue";
+    $echelonClass->formSelectClass = "autosize";
+    $echelonClass->formRequired = "required";
+    $echelonClass->formName = "Echelon";
+    $echelonClass->formIndexSelected = 0;
+    $echelonClass->valueArray = $echelonsArray;
 
+    $stagClass = new formObject();
+    $stagClass->name = "Je suis stagiaire";
+    $stagClass->formSelectClass = "autosize";
+    $stagClass->formNameClass = "formName";
+    $stagClass->formRequired = "required";
+    $stagClass->formName = "Stag";
+    $stagClass->formIndexSelected = 0;
+    $stagClass->valueArray = $stagArray;
 
-		$irClass = new formObject();
-		$irClass->name = "Indemnité de résidence";
-		$irClass->formNameClass = "formName";
-		$irClass->formRequired = "required";
-		$irClass->formName = "IR";
-		$irClass->formIndexSelected = 0;
+    $taiClass = new formObject();
+    $taiClass->name = "Prime Informatique";
+    $taiClass->formNameClass = "formName";
+    $taiClass->formValueClass = "formValue";
+    $taiClass->formSelectClass = "autosize";
+    $taiClass->formRequired = "required";
+    $taiClass->formName = "TAI";
+    $taiClass->formIndexSelected = 0;
 
-		$irClass->valueArray=array("0%","1%","3%");
+    $taiClass->valueArray = $taiArray;
 
+    $irClass = new formObject();
+    $irClass->helpText = $help_ir;
+    $irClass->name = "Indemnité de résidence";
+    $irClass->formNameClass = "formName";
+    $irClass->formRequired = "required";
+    $irClass->formName = "IR";
+    $irClass->formIndexSelected = 0;
+    $irClass->valueArray = $irValueArray;
 
-		$formObjectsArray = array($echelonClass,$stagClass,$taiClass,$irClass);
+    $rifClass = new formObject();
+    $rifClass->name = "Je travaille en région Ile-de-Françe";
+    $rifClass->formNameClass = "formName";
+    $rifClass->formRequired = "required";
+    $rifClass->formName = "ISRIF";
+    $rifClass->formIndexSelected = 0;
 
-		include 'formulaire.php';
-      ?>
+    $rifClass->valueArray = array(
+        "Non",
+        "Oui"
+    );
+
+    $quotiteClass = new formObject();
+    $quotiteClass->name = "Quotité de travail";
+    $quotiteClass->formNameClass = "formName";
+    $quotiteClass->formRequired = "required";
+    $quotiteClass->formName = "QUOTITE";
+    $quotiteClass->formIndexSelected = 0;
+
+    $quotiteClass->valueArray = $quotiteArray;
+
+    $pSourceClass = new formObject();
+    $pSourceClass->name = "Taux d'imposition";
+    $pSourceClass->formType = "number";
+    $pSourceClass->formNameClass = "formName";
+    $pSourceClass->formRequired = "required";
+    $pSourceClass->formName = "PSOURCE";
+
+    $formObjectsArray = array(
+        $gradeClass,
+        $echelonClass,
+        $stagClass,
+        $taiClass,
+        $rifClass,
+        $irClass,
+        $quotiteClass,
+        $pSourceClass
+    );
+
+    include 'formulaire.php';
+    ?>
 
      <div class="titleForm">
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" formtarget="_parent" formmethod="post" value="Lancer la simulation" name="Calcul" type="submit"/>
-     </div>
+			<input
+				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white"
+				formtarget="_parent" formmethod="post" value="Lancer la simulation"
+				name="Calcul" type="submit" />
+		</div>
 
-     <br>
+		<br>
 
-    </form>
-   </body>
+	</form>
+
+
+</body>
 </html>

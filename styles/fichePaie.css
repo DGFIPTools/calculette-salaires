@@ -28,7 +28,14 @@
 	height:1em
 }
 
+#paye_net {
+   font-weight:bold;
+}
+
 h3,h4,h5{
+   padding-left: 0.8em;
+   padding-right: 0.8em;
+   font-size: 1.3em;
 	text-align: center;
 }
 

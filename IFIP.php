@@ -1,3 +1,8 @@
+<?php
+if(!isset($_SESSION)){ 
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,35 +13,65 @@
 <link rel="icon" type="image/png" href="styles/categorie_a.png" />
 <META name="keywords" content="salaire, calculateur, TSPEI, TSDD, TSPDD, TSCDD, TSCEI, IFIP, CFiP, CTRL, Inspecteur des finances publiques">
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+
 </head>
 
   <body>
-    <form action="./IFIP1.php" method="post" name="ts" target="_parent">
+    <form action="./traitement_prepare.php" method="post" name="ts" target="_parent">
+
+	<input type="hidden" name="data_xml" value="ifip">
 
      <h5 class="titleForm">&nbsp; Estimation de votre salaire&nbsp;</h5>
+	 <?php
+		include 'utils.php';
 
-      <?php
-      include 'utils.php';
-      $echelonClass = new formObject();
+
+		# chargement du fichier xml contenant les données
+		$dataFile = 'data/ifip.xml';
+		$xml = simplexml_load_file($dataFile);
+
+		$dataGenericFile = 'data/data.xml';
+		$xmlGeneric = simplexml_load_file($dataGenericFile);
+		
+		# Echelons
+		$quotiteArray=($xmlGeneric->xpath("//data[@category='quotite']/value"));
+		$echelonsArray=($xml->xpath("//data[@category='echelons']/items[@index='0']/value/@name"));
+		$gradeArray=($xml->xpath("//data[@category='grades']/value"));
+		$taiArray=($xml->xpath("//data[@category='tai']/value"));
+		$irValueArray=($xmlGeneric->xpath("//data[@category='irs']/value"));
+		$stagArray=($xml->xpath("//data[@category='stag']/value/@name"));
+		$help_ir=($xmlGeneric->xpath("//data[@category='help_ir']/value")[0]);
+
+		$gradeClass = new formObject();
+		$gradeClass->name = "Grade";
+		$gradeClass->formNameClass = "formName";
+		$gradeClass->formValueClass = "formValue";
+		$gradeClass->formSelectClass = "autosize";
+		$gradeClass->formRequired = "required";
+		$gradeClass->formName = "Grade";
+		$gradeClass->formIndexSelected = 0;
+		$gradeClass->valueArray=$gradeArray;
+
+	  
+		$echelonClass = new formObject();
 		$echelonClass->name = "Echelon";
 		$echelonClass->formNameClass = "formName";
 		$echelonClass->formValueClass = "formValue";
 		$echelonClass->formSelectClass = "autosize";
 		$echelonClass->formRequired = "required";
 		$echelonClass->formName = "Echelon";
-		$echelonClass->formIndexSelected = 12;
+		$echelonClass->formIndexSelected = 1;
 
-		$echelonClass->valueArray=array("Inspecteur 1er échelon","Inspecteur 2ème échelon","Inspecteur 3ème échelon",
-		"Inspecteur 4ème échelon","Inspecteur 5ème échelon","Inspecteur 6ème échelon","Inspecteur 7ème échelon",
-		"Inspecteur 8ème échelon","Inspecteur 9ème échelon","Inspecteur 10ème échelon","Inspecteur 11ème échelon");
+		$echelonClass->valueArray=$echelonsArray;
 		
 		$stagClass = new formObject();
 		$stagClass->name = "Je suis stagiaire";
 		$stagClass->formNameClass = "formName";
+		$stagClass->formSelectClass = "autosize";
 		$stagClass->formRequired = "required";
 		$stagClass->formName = "Stag";
 		$stagClass->formIndexSelected = 0;
-		$stagClass->valueArray=array("Non","Oui - Externe sans reprise d'ancienneté","Oui - Externe avec reprise d'ancienneté","Oui - Interne");
+		$stagClass->valueArray=$stagArray;
 
 
 		$taiClass = new formObject();
@@ -48,19 +83,17 @@
 		$taiClass->formName = "TAI";
 		$taiClass->formIndexSelected = 0;
 
-		$taiClass->valueArray=array("Aucune","PSE  depuis moins d'un an",
-		"PSE depuis plus d'un an mais moins de 2 ans et demi","PSE au delà de 2 ans et demi",
-		"Analyste depuis moins de deux ans","Analyste depuis plus de deux ans mais moins de 4 ans",
-		"Analyste au delà de 4 ans");
+		$taiClass->valueArray=$taiArray;
 
 
 		$irClass = new formObject();
+		$irClass->helpText=$help_ir;
 		$irClass->name = "Indemnité de résidence";
 		$irClass->formNameClass = "formName";
 		$irClass->formRequired = "required";
 		$irClass->formName = "IR";
 		$irClass->formIndexSelected = 0;
-		$irClass->valueArray=array("0%","1%","3%");
+		$irClass->valueArray=$irValueArray;
 		
 		$rifClass = new formObject();
 		$rifClass->name = "Je travaille en région Ile-de-Françe";
@@ -71,16 +104,36 @@
 
 		$rifClass->valueArray=array("Non","Oui");
 
+		$quotiteClass = new formObject();
+		$quotiteClass->name = "Quotité de travail";
+		$quotiteClass->formNameClass = "formName";
+		$quotiteClass->formRequired = "required";
+		$quotiteClass->formName = "QUOTITE";
+		$quotiteClass->formIndexSelected = 0;
 
-		$formObjectsArray = array($echelonClass,$stagClass,$taiClass,$rifClass,$irClass);
+		$quotiteClass->valueArray=$quotiteArray;
+		
+		$pSourceClass = new formObject();
+		$pSourceClass->name = "Taux d'imposition";
+		$pSourceClass->formType = "number";
+		$pSourceClass->formNameClass = "formName";
+		$pSourceClass->formRequired = "required";
+		$pSourceClass->formName = "PSOURCE";
+
+
+
+		$formObjectsArray = array($gradeClass,$echelonClass,$stagClass,$taiClass,$rifClass,$irClass,$quotiteClass,$pSourceClass);
 
 		include 'formulaire.php';
       ?>
+	  
 
      <div class="titleForm">
         <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" formtarget="_parent" formmethod="post" value="Lancer la simulation" name="Calcul" type="submit"/>
      </div>
     <br>
+
+
     </form>
 
 

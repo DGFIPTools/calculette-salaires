@@ -1,0 +1,29 @@
+.container_inner {
+  height: auto;
+  border: none;
+
+  max-width: auto;
+  vertical-align: center;
+  padding: 12px;
+  align-content: center;
+}
+ .num_tiles {
+  width:30px;
+  height: 30px;
+  background-color: #1C375D;
+  color: #ffffff;
+  font-size: 22px;
+  text-align: center;
+  line-height: 20px;
+  padding: 3px;
+  margin: 1.5px;
+  font-family: verdana;
+  vertical-align: center;
+}
+
+ .num_text {
+  text-align: center;
+  padding: 3px;
+  margin: 1.5px;
+  font-family: verdana;
+}

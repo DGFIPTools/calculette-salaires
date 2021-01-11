@@ -1,5 +1,8 @@
 <?php
 class formObject {
+
+    public $mustRefresh = 1;
+
     public function __construct(array $arguments = array()) {
         if (!empty($arguments)) {
             foreach ($arguments as $property => $argument) {

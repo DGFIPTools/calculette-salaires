@@ -4,6 +4,11 @@ html, body {
 	font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+.mdl-navigation__link:hover{
+    background-color: white !important;
+    color: black;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -13,6 +18,14 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+ #titlePage {
+   color:whitesmoke;
+   font-size: 1.3em;
+   display: inline-block;
+   max-width: 500px;
+   width: 90%;
 }
 
 li {

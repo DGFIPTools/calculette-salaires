@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dgfip>
+	<history version="2.2" date="10/01/2020">
+	  <!-- Valeur Février 2017 -->
+		<value>Division de la CSG : partie déductible et non déductible</value>
+		<value>Ajout d'un paramètre permettant de changer la valeur du point d'indice</value>
+	</history>
+	
+	<history version="2.1" date="21/10/2019">
+	  <!-- Valeur Février 2017 -->
+		<value></value>
+	</history>
+
+</dgfip>
