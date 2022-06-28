@@ -62,7 +62,7 @@ $IR=$IR_VALUE*$Traitement_indiciaire;
 $TAI_OBJ=($xmlGrade->xpath("//data[@category='tai']/value")[$taiIndex]);
 $BASE_TAI=$Point*12*494/10000;
 $QUALIF=$TAI_OBJ->attributes()->qualif;
-
+//
 switch ($stagIndex) {
    # Je ne suis pas stagiaire 
      case 0:
@@ -70,8 +70,10 @@ switch ($stagIndex) {
        $stag=0;
        $PR=floatval($gradeValue[0])/12;
        $ACF_ANNUEL=($xmlGrade->xpath("//data[@category='acf']/value"));
-       $ACF = floatval($ACF_ANNUEL[0])*$tempPartiel;
-       $ACF = $ACF / 12;
+       $ACF_Point=floatval($xml->xpath("//data[@category='pointACF']/value")[0]);
+ 
+       $ACF = floatval($ACF_ANNUEL[0]) * $ACF_Point*$tempPartiel;
+       $ACF = round(($ACF / 12),2,PHP_ROUND_HALF_UP);
        break;
     # Stagiaire 
      default :

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dgfip>
 	<data category="pointIndice">
+	  <!-- Valeur Juillet 2022 -->
+		<value>4.85</value>
+	</data>
+
+		<data category="pointACF">
 	  <!-- Valeur Février 2017 -->
-		<value>4.6860</value>
+		<value>55.05</value>
 	</data>
 	
 	<data category="help_ir">

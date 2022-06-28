@@ -58,7 +58,7 @@
   
 	<data category="acf">
 	<!-- Valeur 2019 -->
-		<value>2202</value>
+		<value>40</value>
 	</data>
 
     <!-- Transfers primes/points-->
@@ -71,11 +71,7 @@
     <!-- Transfers primes/points-->
     <data category="tpp_points">
 	<!-- Valeur 2019 -->
-<<<<<<< HEAD
-		<value>4</value>
-=======
 		<value>5</value>
->>>>>>> 513fd49... MAJ 2021
 	</data>
 	
 	
