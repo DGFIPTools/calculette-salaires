@@ -15,15 +15,7 @@ session_start();
 
 <?php
 
-function saveToCache($variable)
-{
-    file_put_contents('cache.txt', json_encode($variable));
-}
 
-function loadCache($variable)
-{
-    file_put_contents('cache.txt', json_encode($variable));
-}
 
 // Fonction qui retourne vrai si on a un lien dans la barre d'adresse
 function hasLink()

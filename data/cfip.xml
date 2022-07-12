@@ -89,13 +89,13 @@
 			
 			<!-- 0 correspond ici a Contrôleur 2eme classe voir 'grades' -->
 			<items index="0">
-				<value name="1er échelon" promotion="1" index="1">343</value>
-				<value name="2eme échelon" promotion="2" index="2">349</value>
-				<value name="3eme échelon" promotion="2" index="3">355</value>
-				<value name="4eme échelon" promotion="2" index="4">361</value>
+				<value name="1er échelon" promotion="1" index="1">356</value>
+				<value name="2eme échelon" promotion="2" index="2">359</value>
+				<value name="3eme échelon" promotion="2" index="3">361</value>
+				<value name="4eme échelon" promotion="2" index="4">363</value>
 				<value name="5eme échelon" promotion="2" index="5">369</value>
 				<value name="6eme échelon" promotion="2" index="6">381</value>
-				<value name="7eme échelon" promotion="2" index="7">393</value>
+				<value name="7eme échelon" promotion="2" index="7">396</value>
 				<value name="8eme échelon" promotion="2" index="8">415</value>
 				<value name="9eme échelon" promotion="2" index="9">431</value>
 				<value name="10eme échelon" promotion="2" index="10">441</value>
@@ -106,19 +106,18 @@
 			
 			<!-- 1 correspond ici a Contrôleur 1ere classe voir 'grades' -->
 			<items index="1">
-				<value name="1er échelon" index="1">356</value>
-				<value name="2eme échelon" index="2">362</value>
-				<value name="3eme échelon" index="3">369</value>
-				<value name="4eme échelon" index="4">379</value>
-				<value name="5eme échelon" index="5">390</value>
-				<value name="6eme échelon" index="6">401</value>
-				<value name="7eme échelon" index="7">416</value>
-				<value name="8eme échelon" index="8">436</value>
-				<value name="9eme échelon" index="9">452</value>
-				<value name="10eme échelon" index="10">461</value>
-				<value name="11eme échelon" index="11">480</value>
-				<value name="12eme échelon" index="12">504</value>
-				<value name="13eme échelon" index="13">534</value>
+				<value name="1er échelon" index="1">363</value>
+				<value name="2eme échelon" index="2">369</value>
+				<value name="3eme échelon" index="3">379</value>
+				<value name="4eme échelon" index="4">390</value>
+				<value name="5eme échelon" index="5">401</value>
+				<value name="6eme échelon" index="6">416</value>
+				<value name="7eme échelon" index="7">436</value>
+				<value name="8eme échelon" index="8">452</value>
+				<value name="9eme échelon" index="9">461</value>
+				<value name="10eme échelon" index="10">480</value>
+				<value name="11eme échelon" index="11">504</value>
+				<value name="12eme échelon" index="12">534</value>
 			</items>
 			
 			<!-- 2 correspond ici a Contrôleur Principal voir 'grades' -->
