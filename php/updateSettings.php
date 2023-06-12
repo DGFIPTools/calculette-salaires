@@ -28,7 +28,7 @@ else{
         $valueGeneric=($xmlGeneric->xpath("//data[@category='".$idArray[$i]."']/value"));
 	    $_SESSION[$idArray[$i]]=(string)$valueGeneric[0];
     }
-
+    echo (string)$valueGeneric[0];
     //echo json_encode($return_arr);
 
 }

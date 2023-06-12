@@ -36,7 +36,7 @@ function loadDefaults()
 
 function reset(){
 	
-	myArray = $('.mdl-textfield__input');
+	myArray = document.querySelectorAll('.mdl-textfield__input');
 	console.log(myArray.length);
 	
 	idArray = new Array(myArray.length);
@@ -55,6 +55,7 @@ function reset(){
 			id:jsonId
 		},
 		success:function(data){
+			document.querySelector("#pointIndice").value = data;
 			showSnackbar("Paramètres réinitialisés " +data);
 	   },
 		 error: function(jqxhr, status, exception) {
@@ -66,7 +67,7 @@ function reset(){
 
 function update() {
 	
-	myArray = $('.mdl-textfield__input');
+	myArray = document.querySelectorAll('.mdl-textfield__input');
 	console.log(myArray.length);
 	
 	idArray = new Array(myArray.length);

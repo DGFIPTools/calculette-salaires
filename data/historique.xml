@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <dgfip>
 
+<history version="2.5" date="12/06/2023">
+	  <!-- Valeur Juillet 2023 -->
+		<value>Mise à jour du point d'indice</value>
+	</history>
+
 	<history version="2.4" date="12/07/2022">
 	  <!-- Valeur Février 2017 -->
 		<value>Mise à jour des Grilles B</value>
