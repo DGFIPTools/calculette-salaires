@@ -84,15 +84,15 @@
 			
 			<!-- 0 correspond ici a Agent Administratif 2ème classe voir 'grades' -->
 			<items index="0">
-				<value name="1er échelon" index="1">352</value>
-				<value name="2eme échelon" index="2">352</value>
-				<value name="3eme échelon" index="3">352</value>
-				<value name="4eme échelon" index="4">352</value>
-				<value name="5eme échelon" index="5">352</value>
-				<value name="6eme échelon" index="6">352</value>
-				<value name="7eme échelon" index="7">352</value>
-				<value name="8eme échelon" index="8">354</value>
-				<value name="9eme échelon" index="9">363</value>
+				<value name="1er échelon" index="1">361</value>
+				<value name="2eme échelon" index="2">362</value>
+				<value name="3eme échelon" index="3">363</value>
+				<value name="4eme échelon" index="4">364</value>
+				<value name="5eme échelon" index="5">365</value>
+				<value name="6eme échelon" index="6">366</value>
+				<value name="7eme échelon" index="7">367</value>
+				<value name="8eme échelon" index="8">368</value>
+				<value name="9eme échelon" index="9">371</value>
 				<value name="10eme échelon" index="10">372</value>
 				<value name="11eme échelon" index="11">382</value>
 			</items>
@@ -100,11 +100,11 @@
 		
 			<!-- 1 correspond ici a Agent Administratif Principal 2ème classe voir 'grades' -->
 			<items index="1">
-				<value name="1er échelon" index="1">352</value>
-				<value name="2eme échelon" index="2">352</value>
-				<value name="3eme échelon" index="3">352</value>
-				<value name="4eme échelon" index="4">354</value>
-				<value name="5eme échelon" index="5">360</value>
+				<value name="1er échelon" index="1">361</value>
+				<value name="2eme échelon" index="2">361</value>
+				<value name="3eme échelon" index="3">361</value>
+				<value name="4eme échelon" index="4">361</value>
+				<value name="5eme échelon" index="5">361</value>
 				<value name="6eme échelon" index="6">365</value>
 				<value name="7eme échelon" index="7">370</value>
 				<value name="8eme échelon" index="8">380</value>
@@ -116,7 +116,7 @@
 			
 			<!-- 3 Agent Administratif Principal 1ere classe voir 'grades' -->
 			<items index="2">
-				<value name="1er échelon" index="1">355</value>
+				<value name="1er échelon" index="1">361</value>
 				<value name="2eme échelon" index="2">361</value>
 				<value name="3eme échelon" index="3">368</value>
 				<value name="4eme échelon" index="4">380</value>
